@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>LoopBack</title>
+    <title>StrongLoop Process Manager</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,300italic,400italic,500italic">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu+Mono">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -30,7 +30,7 @@
       <header class="c-masthead">
         <div class="c-container x-flex-v js-masthead-container">
           <a href="/" class="_logo x-flex-v">
-            <h1 class="c-heading -h3">LoopBack</h1>
+            <h1 class="c-heading -h3">StrongLoop<br/> Process Manager</h1>
           </a>
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
@@ -38,251 +38,66 @@
               <li class="_nav-item -active"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <li class="_nav-item"><a href="/users">Who's using?</a></li>
-              <li class="_nav-item"><a href="/contributing">Contributing</a></li>
+
             </ul>
           </nav>
           <button class="_menu js-menu">
             <i class="fa fa-bars"></i>
             <span class="x-hide">Menu</span>
           </button>
-          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=loopback&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
         </div>
       </header>
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
             <h1 class="c-heading -h2">Examples</h1>
-            <p>StrongLoop provides complete example apps for all LoopBack's major features, including connecting to various kinds of data sources, creating model relations, adding access control, using all the SDKs, and so on.  </p>
+            <p> Here are some basic examples of using StrongLoop Process Manager. </p>
           </div>
         </section>
+
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <div class="c-grid">
-              <div class="_col -col-2-3">
-                <h2 class="c-heading -h3"><a href="https://github.com/strongloop/loopback-example">LoopBack example module</a></h2>
-                <p>Provides links to all the LoopBack example apps <a href="https://github.com/strongloop/loopback-example" class="fa fa-long-arrow-right"></a></p>
-            </div>
-          </div>
-        </section>
-        <section class="c-section">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Create backend APIs through models</h2>
+            <h2 class="c-heading -h3">Example1 TBD</h2>
             <div class="c-grid">
               <div class="_col -col-1-3">
-                <p>Use the LoopBack Yeoman generator to create the project and two models for office supplies app.</p>
+                <p>What this example does</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ mkdir office-supplies
-$ cd office-supplies
-$ slc loopback
-$ slc loopback:model product
-$ slc loopback:model category</code></pre>
+                <pre><code class="language-bash">$ slc pm etc.</code></pre>
               </div>
             </div>
           </div>
         </section>
+
+                <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3">Example2 TBD</h2>
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+                <p>What this example does</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc pm etc.</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Create a secure REST API</h2>
+            <h2 class="c-heading -h3">Example3 TBD</h2>
             <div class="c-grid">
               <div class="_col -col-1-3">
-                <p>Secure all the model APIs, then allow admins to modify products.</p>
+                <p>What this example does</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ yo loopback:acl</code></pre>
+                <pre><code class="language-bash">$ slc pm etc.</code></pre>
               </div>
             </div>
           </div>
         </section>
-        <section class="c-section">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Easily persist data</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-3">
-                <p>LoopBack models have a full set of methods for create, read, update, and delete (CRUD) operations. For example:</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-javascript">category.create({name: 'stationery', id: 1});
-product.create({
-  categoryId: 1,
-  name: 'Pencil',
-  price: 0.99
-});</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="c-section x-greylight">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Define model relations</h2>
-            <div class="c-grid">
-              <div class="_col -col-3-5">
-                <p>Use simple JSON declarative syntax to set up relations between models. For example, the following specifies that a product belongs to one category (identified by categoryId) and has one owner (identified by ownerId).</p>
-                <pre><code class="language-bash">$ slc loopback:relation
-[?] Select the model to create the relationship from: product
-[?] Relation type: belongs to
-[?] Choose a model to create a relationship with: category
-[?] Enter the property name for the relation: category
-[?] Optionally enter a custom foreign key: categoryId</code></pre>
-              </div>
-              <div class="_col -col-2-5">
-                <pre style="max-height: 358px;"><code class="language-javascript">{
-  "name": "product",
-  "base": "PersistedModel",
-  "properties": {
-    "name": {
-      "type": "string"
-    },
-    "category": {
-      "type": "number"
-    }
-  },
-  "validations": [],
-  "relations": {
-    "category": {
-      "type": "belongsTo",
-      "model": "category",
-      "foreignKey": "categoryId"
-    },
-    "owner": {
-      "type": "belongsTo",
-      "model": "owner",
-      "foreignKey": "ownerId"
-    }
-  },
-  "acls": [],
-  "methods": []
-}</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="c-section">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Run ad-hoc queries</h2>
-            <p>Call directly into the LoopBack APIs directly from iOS, Android, or client JavaScript.</p>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h4">Node.js</h3>
-                <pre><code class="language-javascript">MyProduct.find({
-    where: {price: {lt: 100}},
-    order: 'price ASC',
-    limit: 3
-}, function(err, products) {
-    ...
-});</code></pre>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h4">iOS Objective-C</h3>
-                <pre><code class="language-clike">[MyProduct createWithDictionary:@{
-    @"name": @"Pencil",
-    @"price": @0.99
-}]</code></pre>
-              </div>
-            </div>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h4">Android Java</h3>
-                <pre><code class="language-java">Product product = new Product(
-  ImmutableMap.of("name", "Pencil"));
 
-product.save(new Model.Callback() {
-  @Override
-  public void onSuccess() {
-    // saved!
-  }
-  @Override
-  public void onError(Throwable t) {
-    // handle errors
-  }
-});</code></pre>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h4">Angular JS</h3>
-                <pre><code class="language-javascript">$scope.products = MyProduct.find({
-  filter: {
-    where: {price: {lt: 100}},
-    order: 'price ASC',
-    limit: 3
-  }
-});</code></pre>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h4">Isomorphic LoopBack</h3>
-                <pre><code class="language-javascript">MyProduct.find({
-  where: {price: {lt: 100}},
-  order: 'price ASC',
-  limit: 3
-}, function(err, products) {
-  console.log(products); // => Array of MyProduct
-});</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="c-section x-greylight">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Connect to Oracle Database</h2>
-            <div class="c-grid">
-
-              <div class="_col -col-1-3">
-                <p>Install Oracle connector</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-javascript">$ npm install loopback-connector-oracle</code></pre>
-              </div>
-
-              <div class="_col -col-1-3">
-                <p>Run CLI to create new datasource:</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-javascript">$ slc loopback:datasource
-[?] Enter the data-source name: oracledb
-[?] Select the connector for oracledb: Oracle (supported by StrongLoop)</code></pre>
-              </div>
-
-              <div class="_col -col-1-3">
-                <p>Edit <b>/server/datasources.json</b> and add your Oracle database login information:</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-javascript"> "oracledb": {
-    "name": "oracledb",
-    "connector": "oracle",
-    "host": "demo.strongloop.com",
-    "port": 1521,
-    "database": "Sample",
-    "username": "demo",
-    "password": "secret"
-}</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="c-section">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Automatically Discover and Expose Database Tables</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-3">
-                <p>Connectors for Oracle, MySQL, PostgreSQL, and SQL Server provide APIs that enable you to "discover" model definition information from existing databases, including schema information such as column names and datatypes and relation information such as primary and foreign keys.</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-javascript">var ds = require('../data-sources/db.js')('oracle');
-// Discover and build models from INVENTORY table
-ds.discoverAndBuildModels('INVENTORY',
-    {visited: {}, owner: 'LOOPBACK', associations: true},
-    function (err, models) {
-        models.Inventory.findOne({}, function (err, inv) {
-            console.log("Inventory: ", inv);
-            inv.product(function (err, prod) {
-                console.log("Product: ", prod);
-            });
-        });
-    }
-)</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <footer class="c-footer x-green">
         <div class="c-container -padded">
@@ -293,7 +108,7 @@ ds.discoverAndBuildModels('INVENTORY',
               <li class="_nav-item -active"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <li class="_nav-item"><a href="/users">Who's using?</a></li>
-              <li class="_nav-item"><a href="/contributing">Contributing</a></li>
+
               <li class="_nav-item"><a href="https://github.com/strongloop/loopback">GitHub</a></li>
             </ul>
           </nav>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>LoopBack</title>
+    <title>StrongLoop Process Manager</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,300italic,400italic,500italic">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu+Mono">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -30,7 +30,7 @@
       <header class="c-masthead">
         <div class="c-container x-flex-v js-masthead-container">
           <a href="/" class="_logo x-flex-v">
-            <h1 class="c-heading -h3">LoopBack</h1>
+            <h1 class="c-heading -h3">StrongLoop<br/> Process Manager</h1>
           </a>
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
@@ -38,22 +38,21 @@
               <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <li class="_nav-item"><a href="/users">Who's using?</a></li>
-              <li class="_nav-item"><a href="/contributing">Contributing</a></li>
             </ul>
           </nav>
           <button class="_menu js-menu">
             <i class="fa fa-bars"></i>
             <span class="x-hide">Menu</span>
           </button>
-          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=loopback&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
         </div>
         <div class="c-section -intro">
           <div class="c-container">
-            <h2 class="c-heading -h1">Powerful Node.js framework for creating APIs and easily connecting to backend data sources.</h2>
+            <h2 class="c-heading -h1">The best deployment and process management for Node (<i>tagline</i>)</h2>
             <div class="c-grid">
               <div class="_col -col-1-2 -offset-1-4">
                 <div class="c-terminal">
-                  <p>$ npm install -g strongloop</p>
+                  <p>$ npm install -g strong-pm</p>
                 </div>
               </div>
             </div>
@@ -71,24 +70,25 @@
             </div>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>LoopBack is a highly-extensible, open-source Node.js framework</p>
+                <p>StrongLoop Process Manager provides:</p>
                 <ul class="fa-ul">
-                  <li><i class="fa-li fa fa-check"></i> <a href="#core">Quickly create dynamic end-to-end REST APIs</a>.</li>
-                  <li><i class="fa-li fa fa-check"></i> <a href="#juggler">Connect devices and browsers</a> to data and services.</li>
-                  <li><i class="fa-li fa fa-check"></i> Use <a href="#sdks">Android, iOS, and AngularJS SDKs</a> to easily create client apps.</li>
-                  <li><i class="fa-li fa fa-check"></i> <a href="#components">Add-on components</a> for push, file management, 3rd-party login, and geolocation.</li>
-                  <li><i class="fa-li fa fa-check"></i> Use <a href="#arc">StrongLoop Arc</a> to visually edit, deploy, and monitor LoopBack apps.</li>
-                  <li><i class="fa-li fa fa-check"></i> <a href="#gateway">LoopBack API gateway</a> acts an intermediary between API consumers (clients) and API providers to externalize, secure, and manage APIs.</li>
-                  <li><i class="fa-li fa fa-check"></i> Runs on-premises or in the cloud</li>
+                  <li><i class="fa-li fa fa-check"></i> Local and remote Node process management.</li>
+                  <li><i class="fa-li fa fa-check"></i> Nginx load balancing integration.</li>
+                  <li><i class="fa-li fa fa-check"></i> Automated build and multi-host deploy</li>
+                  <li><i class="fa-li fa fa-check"></i> Integrated monitoring and profiling</li>
+                  <li><i class="fa-li fa fa-check"></i> Use <a href="#arc">StrongLoop Arc</a> graphical interface.</li>
+                  <li><i class="fa-li fa fa-check"></i> Zero-downtime application restarts and upgrades.</li>
+                  <li><i class="fa-li fa fa-check"></i> Multi-machine, multi-process application deployment and runtime control</li>
                 </ul>
               </div>
               <div class="_col -col-1-2 x-flex-e"><img src="/images/comb.svg" class="c-fleximg -pull-down -last"/></div>
             </div>
           </div>
         </section>
+        <!--
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Check out who's using LoopBack!</h2>
+            <h2 class="c-heading -h3">Check out who's using SL PM!</h2>
             <div class="c-grid -end-v">
               <div class="_col -col-3-4">
                 <a href="/users"><img src="images/logo-collage.jpg" alt="Customers" class="c-fleximg x-last"></a>
@@ -99,180 +99,50 @@
             </div>
           </div>
         </section>
+        -->
         <section class="c-section">
           <a name="core"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Core</h2>
+            <h2 class="c-heading -h3">Header</h2>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Set up models and create REST APIs in minutes</h3>
+                <h3 class="c-heading -h5">Header</h3>
                 <ul>
-                  <li>Easy-to-use CLI wizard</li>
-                  <li>Create models based on your schema if you have one</li>
-                  <li>Create dynamic models if you don't</li>
-                  <li>Built-in API Explorer</li>
+                  <li>xxx</li>
+                  <li>xxx</li>
                 </ul>
-                <h3 class="c-heading -h5">Model relation support</h3>
-                <ul>
-                  <li>Define hasMany, belongsTo, hasAndBelongsToMany relationships</li>
-                  <li>Automatically generates corresponding relational REST endpoints</li>
-                </ul>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Easy authentication and authorization setup</h3>
-                <ul>
-                  <li>Built-in role-based access controls</li>
-                  <li>oAuth user and registration models baked in</li>
-                  <li>Add custom policies using CLI or JSON</li>
-                  <li>Browser support (JSONP and CORS)</li>
-                </ul>
-                <h3 class="c-heading -h5">MIT Open-Source license</h3>
-                <ul>
-                  <li>Dual Licensed: MIT open-source license or StrongLoop license</li>
-                </ul>
+
               </div>
             </div>
           </div>
         </section>
-        <section class="c-section x-greylight">
-          <a name="juggler"></a>
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Juggler</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Connect to backend data stores</h3>
-                <ul>
-                  <li>MySQL, Oracle, MongoDB, Postgres and others</li>
-                  <li>Other REST services</li>
-                  <li>Discovery APIs for Oracle, MySQL, PostgreSQL and SQL Server</li>
-                </ul>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Run Ad-hoc queries</h3>
-                <ul>
-                  <li>Run dynamic queries on devices, browsers and the server</li>
-                  <li>Support for NoSQL-style queries against relational databases</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="c-section">
-          <a name="sdks"></a>
-          <div class="c-container -padded">
-            <div class="c-grid">
-              <div class="_col -col-1-2 x-flex-e x-flex-order-2"><img src="/images/sdk.svg" class="c-fleximg -pull-down"/></div>
-              <div class="_col -col-1-2 x-flex-order-1">
-                <h2 class="c-heading -h3">Client SDKs</h2>
-                <h3 class="c-heading -h5">Native Mobile and Browser SDKs</h3>
-                <ul>
-                  <li>Easily persist data with a database API on the client</li>
-                  <li>Store files, send push notifications, and call custom server-side code</li>
-                  <li>Android / Java</li>
-                  <li>iOS</li>
-                  <li>Browser JavaScript (Angular)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="c-section x-greylight">
-          <a name="components"></a>
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Add-on components</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Push notifications</h3>
-                <ul>
-                  <li>Backend push system with simple API calls</li>
-                  <li>Supports both Android and iOS</li>
-                </ul>
-                <h3 class="c-heading -h5">Third party login</h3>
-                <ul>
-                  <li>Use third party login providers like Facebook, Google, GitHub, etc.</li>
-                  <li>Map inbound and outbound credentials to users</li>
-                </ul>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Storage service</h3>
-                <ul>
-                  <li>Integrate with cloud storage providers</li>
-                  <li>Organize data in containers and files</li>
-                </ul>
-                <h3 class="c-heading -h5">Geolocation</h3>
-                <ul>
-                  <li>Validate and store geolocations</li>
-                  <li>Find nearby results with geo filters</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+
         <section class="c-section">
           <a name="arc"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3">StrongLoop Arc</h2>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>StrongLoop Arc is a graphical tool for building, deploying, managing, and monitoring LoopBack applications and APIs.
+                <p>StrongLoop Arc is a graphical tool for packaging, deploying, managing, and monitoring Node applications and APIs.
                 It enables you to: </p>
                 <ul>
-                  <li>Create and modify LoopBack models and datasources. </li>
-                  <li>Automatically create database schemas based on your application models.</li>
-                  <li>Discover models based on relational database schemas.</li>
-                  <li>Start, stop, and restart your LoopBack project app.</li>
-                  <li>Explore and operate your REST APIs live, as you develop your model through a richer form-driven interface instead of JSON.</li>
                   <li>Generate and view application CPU profiles and heap snapshots (to help diagnose memory leaks).</li>
                   <li>Build, package, and deploy your Node application to a local or remote system.</li>
                   <li>Gather and view performance metrics on your application.</li>
                 </ul>
               </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Upcoming releases will add the ability to:</h3>
-                <ul>
-                  <li>Scaffold a static web application based on your LoopBack models and data sources.</li>
-                  <li>Enter data for the models you have created through a form-based web application.</li>
-                </ul>
-              </div>
             </div>
-            <p>For more information, see <a href="http://docs.strongloop.com/display/APIS/Composing+APIs">Composing APIs with StrongLoop Arc</a>.</p>
+            <p>For more information, see <a href="http://docs.strongloop.com/display/APIS/Using+Arc">Using StrongLoop Arc</a>.</p>
           </div>
         </section>
-        <section class="c-section x-greylight">
-          <a name="gateway"></a>
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">LoopBack API Gateway</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <p>Incorporate API Gateway modules into a LoopBack application to provide the functions in-process or separately:</p>
-                <h3 class="c-heading -h5">Security</h3>
-                <p>Acts as provider and delegator to authentication, authorization, and auditing (AAA) sources within the enterprise as the first intercept to establish identity.</p>
-                <h3 class="c-heading -h5">Mediation and transformation</h3>
-                <p>Mediates between protocols and transforms portions of the API payload (both header and body) for clients that have fixed and/or specific requirements for consumption.</p>
-                <h3 class="c-heading -h5">Infrastructure QoS</h3>
-                <p>Performs infrastructure-level API consumption functions required by client such as pagination, throttling, caching, delivery guarantee, firewall, and so on.</p>
-              </div>
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Monitoring and reporting</h3>
-                <p>Instruments APIs to fulfill service-level agreements (SLAs) through the monitoring of APIs and also injects metadata to report on API usage, health, and other metrics.</p>
-                <h3 class="c-heading -h5">Aggregation</h3>
-                <p>Compose coarse-grain APIs (mashups) from fine-grain micro-APIs to fulfill specific business case operations through dynamic invocation and construction.</p>
-                <h3 class="c-heading -h5">Virtualization</h3>
-                <p>A layer of abstraction that virtualizes API endpoints and acts  as a reverse proxy to API platform host instances for high availability, security and scale.</p>
-              </div>
-            </div>
-            <p>For more information, see <a href="http://docs.strongloop.com/display/LB/LoopBack+API+Gateway">API Gateway</a> in LoopBack documentation.</p>
-          </div>
-        </section>
+
         <section class="c-section">
           <div class="c-container -padded">
             <h2 class="c-heading -h3">More information</h2>
             <div class="c-grid">
               <div class="_col -col-1-2">
                 <ul>
-                  <li><a href="http://docs.strongloop.com/display/LB">LoopBack Documentation</a></li>
-                  <li><a href="http://apidocs.strongloop.com/loopback/">API docs</a></li>
-                  <li><a href="http://strongloop.com/strongblog/category/loopback-2/">StrongLoop blog</a></li>
+                  <li><a href="http://docs.strongloop.com/display/SLC">StrongLoop Documentation</a></li>
                   <li><a href="http://strongloop.com/node-js/subscription-plans/">Professional support</a></li>
                 </ul>
               </div>
@@ -289,12 +159,12 @@
               <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <li class="_nav-item"><a href="/users">Who's using?</a></li>
-              <li class="_nav-item"><a href="/contributing">Contributing</a></li>
-              <li class="_nav-item"><a href="https://github.com/strongloop/loopback">GitHub</a></li>
+
+              <li class="_nav-item"><a href="https://github.com/strongloop/strong-pm">GitHub</a></li>
             </ul>
           </nav>
           <p class="_copyright">© Copyright 2015 StrongLoop, Inc.</p>
-          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=loopback&amp;type=follow" class="c-github-follow"></iframe>
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=follow" class="c-github-follow"></iframe>
         </div>
       </footer>
     </div>
