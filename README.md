@@ -7,7 +7,7 @@ How to run the site locally:
 
 Get `serve` module if you don't already have it:
 
-   ```npm install -g serve```
+   ```$ npm install -g serve```
 
 Clone the repo:<br/>
    ```
