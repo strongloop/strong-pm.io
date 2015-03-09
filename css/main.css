@@ -951,7 +951,7 @@ li > dl {
     display: inline-block;
     margin: 0 1rem 0 0;
     content: "";
-    background: url("/images/loopback.svg");
+    background: url("/images/slpm logo.png");
 }
 
 @media (max-width:567px) {
