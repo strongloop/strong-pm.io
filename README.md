@@ -10,10 +10,10 @@ Get `serve` module if you don't already have it:
    ```$ npm install -g serve```
 
 Clone the repo:<br/>
-   ```
-      $ git clone https://github.com/strongloop/strong-pm.io.git 
-      $ cd strong-pm.io
-      serving /<path>/strong-pm.io on port 3000
-   ```
+```
+$ git clone https://github.com/strongloop/strong-pm.io.git 
+$ cd strong-pm.io
+serving /<path>/strong-pm.io on port 3000
+```
 
 Load http://localhost:3000 to view the site.
