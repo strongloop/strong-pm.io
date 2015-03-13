@@ -34,50 +34,469 @@
           </a>
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
+              <li class="_nav-item"><a href="/">About</a></li>
               <li class="_nav-item -active"><a href="/getting-started">Getting started</a></li>
               <li class="_nav-item"><a href="/examples">Examples</a></li>
+             <!-- <li class="_nav-item"><a href="/prod">Use in Production</a></li> -->
               <li class="_nav-item"><a href="/resources">Resources</a></li>
-              <li class="_nav-item"><a href="/users">Who's using?</a></li>
             </ul>
           </nav>
           <button class="_menu js-menu">
             <i class="fa fa-bars"></i>
             <span class="x-hide">Menu</span>
           </button>
-          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
+
+        <!--  <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&repo=strong-pm&type=watch" class="c-github-star js-github-star"></iframe>  -->
+
         </div>
       </header>
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
             <h1 class="c-heading -h2">Getting started</h1>
-            <p>Assuming you have already installed Node...</p>
+            <p><b>Assuming you have already installed Node...</b></p>
+
+            <ul>
+              <li><a href="#local">Install StrongLoop tools on your local system and try out</a></li>
+              <li><a href="#prod">Install StrongLoop Process Manager and use on production host</a></li>
+            </ul>
           </div>
         </section>
-        <section class="c-section x-greylight">
+
+        <section class="c-section x-greylight"><a name="local"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Run locally</h2>
+            <h2 class="c-heading -h3">Install locally</h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
-                <p>Install StrongLoop </p>
+              <div class="_col -col-1-2">
+            <p>Install StrongLoop on your local system: This installs both the client tools and StrongLoop Process Manager locally
+            for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
+            If you're on Windows, see <a href="http://docs.strongloop.com/display/SL/Installing+Node+and+StrongLoop+on+Windows">Installing Node
+            and StrongLoop on Windows</a>.
+            </p>
+
+            <p>Later, you'll install Process Manager on your production hosts and use the client tools to deploy to it.
+            </p>
               </div>
-              <div class="_col -col-2-3">
+              <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ npm install -g strongloop</code></pre>
               </div>
             </div>
           </div>
         </section>
-        <section class="c-section">
+
+        <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Run on production / deployment system</h2>
+            <h2 class="c-heading -h4"> Get an app </h2>
+
             <div class="c-grid">
+              <div class="_col -col-1-3">
+                <p>Get an app if you don't have one handy.  Use your own Node app if you prefer.</p>
+              </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ npm install -g strong-pm</code></pre>
+<pre><code class="language-bash">$ git clone https://github.com/strongloop/express-example-app.git
+</code></pre>
               </div>
             </div>
           </div>
         </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Start application</h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <p>Start Process Manager locally and deploy the app to it. </p>
+                <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to see the app home page.</p>
+              </div>
+              <div class="_col -col-1-2">
+<pre><code class="language-bash">$ cd express-example-app
+$ slc start
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Display app status </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+            <p>Enter this command:</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc ctl --control http://localhost:8701</code></pre>
+              </div>
+            </div>
+            <div class="_col -col-1-3">
+              <p>You'll see something like this (for example, on a four-core system):</p>
+            </div>
+            <div class="_col -col-2-3">
+<pre><code class="language-bash">manager:
+  pid:                22642
+  port:               8701
+  base:               /the/app/path/.strong-pm
+  config:             undefined
+current:
+  status:             started
+  pid:                22669
+  link:               /the/app/path/.strong-pm/work/current
+  current:            826d11fe9a7f5b04e586.1426200263251
+  branch:             npm-pack
+  worker count:       4
+    [1]:              cluster id 1, pid 22670
+    [2]:              cluster id 2, pid 22671
+    [3]:              cluster id 3, pid 22672
+    [4]:              cluster id 4, pid 22673
+  config:             default
+    start command:    sl-run --cluster=CPU
+    stop signal:      SIGTERM
+    replace signal:   SIGHUP
+</code></pre>
+              </div>
+            </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Reploy app with zero downtime </h2>
+            <div class="c-grid" >
+              <div class="_col -col-1-2">
+            <p>Make a small change to the app: Edit <code>app.js</code> and change <i>TBD...</i>
+            </p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash"> Code to be changed here (?)... </code></pre>
+              </div>
+            </div>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+            <p>Make a small change to the app and redeploy.<br/>
+            NOTE: Don't need to restart when using <code>slc deploy</code>, but what about when using <code>slc start</code>?
+            <i>Should we use soft-restart instead?</i>
+            </p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl restart</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Change cluster size  </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+            <p>By default the Process Manager runs one process per CPU.  So, on a four-core system
+            it will run the app in a four-process cluster.  You can easily change the cluster size.</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl set-size 2</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Shut down Process Manager  </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+            <p>Now shut down Process Manager, because you're going to start up StrongLoop Arc.</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl shutdown</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Generate logs </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                Dump the log buffer to stdout.
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc pmctl -C http://localhost:8701 log-dump</code></pre>
+              </div>
+              <div class="_col -col-1-1">
+                <pre><code class="language-bash">
+2015-03-13T23:37:19.263Z pid:36620 worker:0 INFO strong-agent API key not found, StrongOps dashboard reporting disabled.
+2015-03-13T23:37:19.265Z pid:36620 worker:0 Generate configuration with:
+2015-03-13T23:37:19.265Z pid:36620 worker:0     npm install -g strongloop
+2015-03-13T23:37:19.265Z pid:36620 worker:0     slc strongops
+2015-03-13T23:37:19.265Z pid:36620 worker:0 See http://docs.strongloop.com/strong-agent for more information.
+2015-03-13T23:37:19.265Z pid:36620 worker:0 INFO supervisor starting (pid 36620)
+2015-03-13T23:37:19.265Z pid:36620 worker:0 INFO supervisor reporting metrics to `internal:`
+2015-03-13T23:37:19.267Z pid:36620 worker:0 INFO strong-agent not profiling, agent metrics requires a valid license.
+2015-03-13T23:37:19.267Z pid:36620 worker:0 Please contact sales@strongloop.com for assistance.
+2015-03-13T23:37:19.267Z pid:36620 worker:0 INFO supervisor size set to 4
+2015-03-13T23:37:19.271Z pid:36620 worker:0 INFO supervisor listening on 'runctl'
+2015-03-13T23:37:19.344Z pid:36620 worker:0 INFO supervisor started worker 1 (pid 36621)
+2015-03-13T23:37:19.476Z pid:36620 worker:0 INFO supervisor started worker 2 (pid 36622)
+2015-03-13T23:37:19.610Z pid:36620 worker:0 INFO supervisor started worker 3 (pid 36623)
+2015-03-13T23:37:19.869Z pid:36620 worker:0 INFO supervisor started worker 4 (pid 36624)
+2015-03-13T23:37:19.869Z pid:36620 worker:0 INFO supervisor resized to 4
+2015-03-13T23:37:29.459Z pid:36621 worker:1 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:29.459Z pid:36621 worker:1 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:29.460Z pid:36622 worker:2 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:29.460Z pid:36622 worker:2 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:29.460Z pid:36624 worker:4 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:29.460Z pid:36624 worker:4 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:29.460Z pid:36623 worker:3 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:29.460Z pid:36623 worker:3 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:49.302Z pid:36620 worker:0 WARN received SIGHUP, restarting workers
+2015-03-13T23:37:49.316Z pid:36620 worker:0 ERROR supervisor worker id 1 (pid 36621) expected exit with 2
+2015-03-13T23:37:49.372Z pid:36620 worker:0 INFO supervisor started worker 5 (pid 36628)
+2015-03-13T23:37:49.372Z pid:36620 worker:0 INFO supervisor resized to 4
+2015-03-13T23:37:50.573Z pid:36628 worker:5 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:50.573Z pid:36628 worker:5 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:51.389Z pid:36620 worker:0 ERROR supervisor worker id 2 (pid 36622) expected exit with 2
+2015-03-13T23:37:51.442Z pid:36620 worker:0 INFO supervisor started worker 6 (pid 36629)
+2015-03-13T23:37:51.442Z pid:36620 worker:0 INFO supervisor resized to 4
+2015-03-13T23:37:52.611Z pid:36629 worker:6 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:52.611Z pid:36629 worker:6 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:53.458Z pid:36620 worker:0 ERROR supervisor worker id 3 (pid 36623) expected exit with 2
+2015-03-13T23:37:53.511Z pid:36620 worker:0 INFO supervisor started worker 7 (pid 36630)
+2015-03-13T23:37:53.511Z pid:36620 worker:0 INFO supervisor resized to 4
+2015-03-13T23:37:54.658Z pid:36630 worker:7 Browse your REST API at http://localhost:3000/explorer
+2015-03-13T23:37:54.659Z pid:36630 worker:7 Web server listening at: http://localhost:3000/
+2015-03-13T23:37:55.525Z pid:36620 worker:0 ERROR supervisor worker id 4 (pid 36624) expected exit with 2
+2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor started worker 8 (pid 36632)
+2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor resized to 4
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Monitor app performance with Arc </h2>
+
+            <div class="c-grid ">
+              <div class="_col -col-1-2">
+                <ul>
+                  <li>Get a StrongLoop license key. <i>How?</i></li>
+                  <li>Add your license as shown at right.</li>
+                  <li>Start Arc and log in.</li>
+                  <li>Click <b>Metrics</b> to view Metrics.</li>
+                </ul>
+              </div>
+              <div class="_col -col-1-2">
+<pre><code class="language-bash">$ slc license xxxxxxxxxx
+$ slc arc
+</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-1-1" style="margin: 1.5em 0 1.5em 0;">
+                <p>NOTE: To view metrics, you must have C compiler tools installed.  These come standard on most Linux systems.
+                See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-3-4">
+                <img src="http://docs.strongloop.com/download/attachments/4557583/remote%20metrics.png?version=1&modificationDate=1418688309000&api=v2" class="c-fleximg"/>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> View CPU and memory profiles </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-3-4">
+            <p>Follow the instructions above to register, start Arc, and log in.</p>
+            <ul>
+              <li>Click <b>Profiler</b>.</li>
+              <li>Click <b>Load</b> to load.  You'll see the PIDs of the app processes; the first one is selected by default.</li>
+              <li>Notice "JavaScript/Node.js CPU Profile" is selected by default. Click <b>Start</b> to start CPU profiling the first worker process.  Wait about five seconds then click <b>Stop</b>.</li>
+              <li>Select "Heap Snapshot" and repeat the process</li>
+              <li>Click time you do this, the profile will be added to the Profiles list on the left. Select each profile in the
+              list to view it; for example as shown below.</li>
+            </ul>
+            <p>&nbsp;</p>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-2-3">
+                <img src="/images/arc profiler 1.1.png" class="c-fleximg"/>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight"><a name="prod"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3">Install on production host</h2>
+            <div class="c-grid">
+              <div class="_col -col-1-1">
+                <p>Install StrongLoop Process Manager "standalone" on a production host using either npm or Docker.
+                Then you can remotely deploy and control your app using the StrongLoop client tools (Arc or slc).  Either:
+                </p>
+                <ul>
+                  <li><a href="#npm-install">Install with npm</a></li>
+                  <li><a href="#docker">Install using Docker</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section "><a name="npm-install"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4">Install from npm and run as a service </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <p>Install StrongLoop Process Manager from npm:</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ npm install -g strong-pm</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid" style="margin-bottom: 10px;">
+              <div class="_col -col-1-1">
+                <p>On Linux distributions that support <b>Upstart</b> or <b>systemd</b>, run Process Manager as a service
+                to ensure it starts when the system boots, aggregates logs properly, and so on.</p>
+                <br/>
+              </div>
+
+              <div class="_col -col-1-3">
+                <p>Ubuntu 12.04+:</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ sudo sl-pm-install</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid" style="margin-bottom: 10px;">
+              <div class="_col -col-1-3">
+                <p>Red Hat Enterprise Linux 7+:</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ sudo sl-pm-install --systemd</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+                <p>Red Hat Enterprise Linux  5 and 6:</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ sudo sl-pm-install --upstart=0.6 </code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight"><a name="docker"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Installing from Docker Hub </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-1">
+                <pre>
+<code class="language-bash">$ docker pull strongloop/strong-pm
+$ docker run -d -p 8701:8701 -p 80:3000 --name strong-pm strongloop/strong-pm</code></pre>
+              </div>
+            </div>
+            <div class="_col -col-1-1">
+              <p>For more information on Docker and Docker Hub, see <a href="https://www.docker.com/">https://www.docker.com</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Create a build archive </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+                <p>Create a .tgz archive of your application.</p>
+                <p>Alternatively, you can commit to a "deploy" branch in Git.
+                See <a href="http://docs.strongloop.com/display/SLC/Committing+a+build+to+Git">Committing a build to Git</a> for details.</p>
+              </div>
+              <div class="_col -col-2-3">
+<pre><code class="language-bash">$ slc build --pack
+Running `npm --quiet pack`
+Running `mv -f express-example-app1-1.0.0.tgz ../express-example-app1-1.0.0.tgz`
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Deploy to remote host </h2>
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+            <p>Control the Process Manager remotely.</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz
+$ slc ctl -C http://your.remote.host
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Manage remotely </h2>
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+            <p>Control the Process Manager remotely.</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc ctl -C http://your.remote.host:8701</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Set up load balancer </h2>
+            <div class="c-grid">
+              <div class="_col -col-1-2"><p>Assuming you have already <a href="http://nginx.org/en/download.html">installed Nginx</a>....</p></div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <p>Install Nginx load balancer</p>
+                <p>Run the StrongLoop Nginx Controller as a transient process (for development and testing).
+                For production use, <a href="http://docs.strongloop.com/display/SLC/Configuring+Nginx+load+balancer#ConfiguringNginxloadbalancer-Installingasaservice">run it as a service</a>.
+                </p>
+                <p>Add the load balancer in Arc.</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ npm install -g strong-nginx-controller</code></pre>
+                <pre><code class="language-bash">$ sl-nginx-ctl</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
       </main>
       <footer class="c-footer x-green">
@@ -88,7 +507,7 @@
               <li class="_nav-item -active"><a href="/getting-started">Getting started</a></li>
               <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
-              <li class="_nav-item"><a href="/users">Who's using?</a></li>
+              <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
 
               <li class="_nav-item"><a href="https://github.com/strongloop/loopback">GitHub</a></li>
             </ul>

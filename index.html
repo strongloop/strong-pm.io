@@ -34,17 +34,18 @@
           </a>
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
+              <li class="_nav-item -active"><a href="/">About</a></li>
               <li class="_nav-item"><a href="/getting-started">Getting started</a></li>
               <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
-              <li class="_nav-item"><a href="/users">Who's using?</a></li>
+              <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
             </ul>
           </nav>
           <button class="_menu js-menu">
             <i class="fa fa-bars"></i>
             <span class="x-hide">Menu</span>
           </button>
-          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
+        <!--  <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe> -->
         </div>
         <div class="c-section -intro">
           <div class="c-container">
@@ -52,7 +53,7 @@
             <div class="c-grid">
               <div class="_col -col-1-2 -offset-1-4">
                 <div class="c-terminal">
-                  <p>$ npm install -g strong-pm</p>
+                  <p>$ npm install -g strongloop</p>
                 </div>
               </div>
             </div>
@@ -62,81 +63,94 @@
       </header>
       <main class="c-content">
         <section class="c-section">
-          <div class="c-container -padded" >
+          <div class="c-container -padded">
             <div class="c-grid" >
               <div class="_col -col-1-2">
                 <h1 class="c-heading -h2">About</h1>
               </div>
             </div>
+
             <div class="c-grid">
-              <div class="_col -col-1-2">
-                <p>StrongLoop Process Manager provides:</p>
+              <div class="_col -col-2-3">
+                <p>StrongLoop provides tools for the entire Node devops lifecyle.</p>
                 <ul class="fa-ul">
-                  <li><i class="fa-li fa fa-check"></i> Local and remote Node process management.</li>
-                  <li><i class="fa-li fa fa-check"></i> Nginx load balancing integration.</li>
-                  <li><i class="fa-li fa fa-check"></i> Automated build and multi-host deploy</li>
-                  <li><i class="fa-li fa fa-check"></i> Integrated monitoring and profiling</li>
-                  <li><i class="fa-li fa fa-check"></i> Use <a href="#arc">StrongLoop Arc</a> graphical interface.</li>
-                  <li><i class="fa-li fa fa-check"></i> Zero-downtime application restarts and upgrades.</li>
-                  <li><i class="fa-li fa fa-check"></i> Multi-machine, multi-process application deployment and runtime control</li>
+                  <li><i class="fa-li fa fa-check"></i><a href="#build-deploy">Build, package, and deploy</a> your Node application to a local or remote system.</li>
+                  <li><i class="fa-li fa fa-check"></i><a href="#profile">View CPU profiles and heap snapshots</a> to optimize performance issues and diagnose memory leaks.</li>
+                  <li><i class="fa-li fa fa-check"></i><a href="#pm">Manage processes and clusters</a> using StrongLoop Process Manager.</li>
+                  <li><i class="fa-li fa fa-check"></i><a href="#metrics">View performance metrics</a> on your application.</li>
+                  <li>Use graphical tool StrongLoop Arc or command-line tool, <b>slc</b>.</li>
                 </ul>
               </div>
-              <div class="_col -col-1-2 x-flex-e"><img src="/images/comb.svg" class="c-fleximg -pull-down -last"/></div>
+              <div class="_col -col-1-3 x-flex-e"><img src="/images/comb.svg" class="c-fleximg -pull-down -last"/></div>
             </div>
           </div>
         </section>
-        <!--
+
         <section class="c-section x-greylight">
+          <a name="build-deploy"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Check out who's using SL PM!</h2>
-            <div class="c-grid -end-v">
-              <div class="_col -col-3-4">
-                <a href="/users"><img src="images/logo-collage.jpg" alt="Customers" class="c-fleximg x-last"></a>
-              </div>
-              <div class="_col -col-1-4">
-                <a href="/users" class="c-button -lg">View More</a>
-              </div>
-            </div>
-          </div>
-        </section>
-        -->
-        <section class="c-section">
-          <a name="core"></a>
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Header</h2>
+            <h2 class="c-heading -h3"><img src="images/arc-build-deploy-icon.png" class="icon-img" />Build & Deploy</h2>
             <div class="c-grid">
-              <div class="_col -col-1-2">
-                <h3 class="c-heading -h5">Header</h3>
-                <ul>
-                  <li>xxx</li>
-                  <li>xxx</li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="c-section">
-          <a name="arc"></a>
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">StrongLoop Arc</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <p>StrongLoop Arc is a graphical tool for packaging, deploying, managing, and monitoring Node applications and APIs.
-                It enables you to: </p>
-                <ul>
-                  <li>Generate and view application CPU profiles and heap snapshots (to help diagnose memory leaks).</li>
-                  <li>Build, package, and deploy your Node application to a local or remote system.</li>
-                  <li>Gather and view performance metrics on your application.</li>
+              <div class="_col -col-2-3">
+                <ul class="fa-ul">
+                  <li><i class="fa-li fa fa-check"></i>Automated build and multi-host deploy.</li>
+                  <li><i class="fa-li fa fa-check"></i>Zero-downtime application restarts and upgrades.</li>
+                  <li><i class="fa-li fa fa-check"></i>Install dependencies, run custom build steps, and prune development dependencies without affecting your source tree.</li>
+                  <li><i class="fa-li fa fa-check"></i>Create an npm package or commit the build onto a Git deploy branch.</li>
                 </ul>
               </div>
             </div>
-            <p>For more information, see <a href="http://docs.strongloop.com/display/APIS/Using+Arc">Using StrongLoop Arc</a>.</p>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <a name="profile"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3"><img src="images/arc-profiler-icon.png" class="icon-img" />Profile</h2>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <ul class="fa-ul">
+                  <li><i class="fa-li fa fa-check"></i>Heap snapshots and CPU profiles.</li>
+                  <li><i class="fa-li fa fa-check"></i>Profile local or remote applications with Arc.</li>
+                  <li><i class="fa-li fa fa-check"></i>Profile local applications with slc.</li>
+                  <li><i class="fa-li fa fa-check"></i>Use the  <i>watchdog</i> to start CPU profiling when the Node event loop stalls. </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <a name="pm"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3"><img src="images/arc-pm-icon.png" class="icon-img" />Process Manager</h2>
+            <div class="c-grid">
+              <div class="_col -col-2-3">
+                <ul class="fa-ul">
+                  <li><i class="fa-li fa fa-check"></i>Local and remote process management for Node & Express apps.</li>
+                  <li><i class="fa-li fa fa-check"></i>Manage Nginx load-balancer for multi-host deployments.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 
         <section class="c-section">
+          <a name="metrics"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3"><img src="images/arc-metrics-icon.png" class="icon-img" />Metrics</h2>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <ul class="fa-ul">
+                  <li><i class="fa-li fa fa-check"></i>View performance metrics in Arc</li>
+                  <li><i class="fa-li fa fa-check"></i> Use your own StatsD console if you prefer.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
           <div class="c-container -padded">
             <h2 class="c-heading -h3">More information</h2>
             <div class="c-grid">
@@ -158,13 +172,13 @@
               <li class="_nav-item"><a href="/getting-started">Getting started</a></li>
               <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
-              <li class="_nav-item"><a href="/users">Who's using?</a></li>
+              <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
 
               <li class="_nav-item"><a href="https://github.com/strongloop/strong-pm">GitHub</a></li>
             </ul>
           </nav>
           <p class="_copyright">© Copyright 2015 StrongLoop, Inc.</p>
-          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=follow" class="c-github-follow"></iframe>
+        <!--  <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=follow" class="c-github-follow"></iframe> -->
         </div>
       </footer>
     </div>

@@ -951,7 +951,7 @@ li > dl {
     display: inline-block;
     margin: 0 1rem 0 0;
     content: "";
-    background: url("/images/slpm logo.png");
+    background: url("/images/slpm logo.png") no-repeat;
 }
 
 @media (max-width:567px) {
@@ -1274,4 +1274,14 @@ pre[class*="language-"] {
 
 .feedcontainer li {
   line-height: 1.5em;
+}
+
+/** Strong PM new styles **/
+
+.icon-img {
+    display: inline;
+    vertical-align: middle;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
 }
