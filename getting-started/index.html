@@ -69,13 +69,13 @@
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-            <p>Install StrongLoop on your local system: This installs both the client tools and StrongLoop Process Manager locally
+            <p>Install StrongLoop on your local system: This installs the client tools and StrongLoop Process Manager locally
             for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
             If you're on Windows, see <a href="http://docs.strongloop.com/display/SL/Installing+Node+and+StrongLoop+on+Windows">Installing Node
             and StrongLoop on Windows</a>.
             </p>
 
-            <p>Later, you'll install Process Manager on your production hosts and use the client tools to deploy to it.
+            <p>Later, you'll <a href="#prod">install Process Manager on your production hosts</a> and use the client tools to deploy to it and manage apps there running under StrongLoop PM.
             </p>
               </div>
               <div class="_col -col-1-2">
@@ -124,18 +124,13 @@ $ slc start
             <h2 class="c-heading -h4"> Display app status </h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
-            <p>Enter this command:</p>
+              <div class="_col -col-1-1">
+                <p>Get a quick status overview with all worker PIDs, cluster IDs, other key information.</p>
+                <br/>
               </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc ctl --control http://localhost:8701</code></pre>
-              </div>
-            </div>
-            <div class="_col -col-1-3">
-              <p>You'll see something like this (for example, on a four-core system):</p>
-            </div>
-            <div class="_col -col-2-3">
-<pre><code class="language-bash">manager:
+              <div class="_col -col-1-1">
+                <pre><code class="language-bash">$ slc ctl --control http://localhost:8701
+manager:
   pid:                22642
   port:               8701
   base:               /the/app/path/.strong-pm
@@ -158,29 +153,19 @@ current:
 </code></pre>
               </div>
             </div>
+          </div>
         </section>
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Reploy app with zero downtime </h2>
+            <h2 class="c-heading -h4">Re-deploy app with zero downtime  </h2>
             <div class="c-grid" >
               <div class="_col -col-1-2">
-            <p>Make a small change to the app: Edit <code>app.js</code> and change <i>TBD...</i>
-            </p>
+                <p>StrongLoop Process Manager performs a rolling restart of all processes when you re-deploy.</p>
+                <p><i>NOTE: Don't need to restart when using <code>slc deploy</code>, but what about when using <code>slc start</code>?</i> Use a diff command?</p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash"> Code to be changed here (?)... </code></pre>
-              </div>
-            </div>
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-            <p>Make a small change to the app and redeploy.<br/>
-            NOTE: Don't need to restart when using <code>slc deploy</code>, but what about when using <code>slc start</code>?
-            <i>Should we use soft-restart instead?</i>
-            </p>
-              </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl restart</code></pre>
+                <pre><code class="language-bash"> $ slc deploy http://localhost:8701 </code></pre>
               </div>
             </div>
           </div>
@@ -204,21 +189,6 @@ current:
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Shut down Process Manager  </h2>
-
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-            <p>Now shut down Process Manager, because you're going to start up StrongLoop Arc.</p>
-              </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl shutdown</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="c-section ">
-          <div class="c-container -padded">
             <h2 class="c-heading -h4"> Generate logs </h2>
 
             <div class="c-grid">
@@ -226,7 +196,7 @@ current:
                 Dump the log buffer to stdout.
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc pmctl -C http://localhost:8701 log-dump</code></pre>
+                <pre><code class="language-bash">$ slc ctl -C http://localhost:8701 log-dump</code></pre>
               </div>
               <div class="_col -col-1-1">
                 <pre><code class="language-bash">
@@ -274,6 +244,22 @@ current:
 2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor started worker 8 (pid 36632)
 2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor resized to 4
 </code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Shut down Process Manager  </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <b>CONFIRM WE DON'T NEED TO DO THIS NOW WITH slc start</b>
+            <p>Now shut down Process Manager, because you're going to start up StrongLoop Arc.</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl shutdown</code></pre>
               </div>
             </div>
           </div>
