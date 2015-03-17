@@ -69,13 +69,14 @@
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-            <p>Install StrongLoop on your local system: This installs the client tools and StrongLoop Process Manager locally
+            <p>Install StrongLoop on your local system: This installs the client tools (Arc and <span style="font-family: monospace;">slc</span>) and StrongLoop Process Manager
             for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
             If you're on Windows, see <a href="http://docs.strongloop.com/display/SL/Installing+Node+and+StrongLoop+on+Windows">Installing Node
             and StrongLoop on Windows</a>.
             </p>
 
-            <p>Later, you'll <a href="#prod">install Process Manager on your production hosts</a> and use the client tools to deploy to it and manage apps there running under StrongLoop PM.
+            <p>Later, you'll <a href="#prod">install Process Manager on a production host</a> and use the client tools to deploy to it and
+            manage apps there running under StrongLoop PM.
             </p>
               </div>
               <div class="_col -col-1-2">
@@ -87,14 +88,18 @@
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Get an app </h2>
+            <h2 class="c-heading -h4"> Start application</h2>
 
             <div class="c-grid">
               <div class="_col -col-1-3">
-                <p>Get an app if you don't have one handy.  Use your own Node app if you prefer.</p>
+                <p>Get an app if you don't have one handy. </p>
+                <p>Start Process Manager locally and deploy the app to it. </p>
+                <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to see the app home page.</p>
               </div>
               <div class="_col -col-2-3">
 <pre><code class="language-bash">$ git clone https://github.com/strongloop/express-example-app.git
+$ cd express-example-app
+$ slc start
 </code></pre>
               </div>
             </div>
@@ -103,31 +108,16 @@
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Start application</h2>
-
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <p>Start Process Manager locally and deploy the app to it. </p>
-                <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to see the app home page.</p>
-              </div>
-              <div class="_col -col-1-2">
-<pre><code class="language-bash">$ cd express-example-app
-$ slc start
-</code></pre>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="c-section ">
-          <div class="c-container -padded">
             <h2 class="c-heading -h4"> Display app status </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>Get a quick status overview with all worker PIDs, cluster IDs, other key information.</p>
-                <br/>
+
+                <p><i>QUESTION: Include URL arg (to illustrate how to use for remote), even though localhost:8701 is the default</i>?</p>
+ <br/>
               </div>
+            </div><div class="c-grid">
               <div class="_col -col-1-1">
                 <pre><code class="language-bash">$ slc ctl --control http://localhost:8701
 manager:
@@ -156,7 +146,7 @@ current:
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section ">
           <div class="c-container -padded">
             <h2 class="c-heading -h4">Re-deploy app with zero downtime  </h2>
             <div class="c-grid" >
@@ -171,7 +161,7 @@ current:
           </div>
         </section>
 
-        <section class="c-section ">
+        <section class="c-section x-greylight">
           <div class="c-container -padded">
             <h2 class="c-heading -h4"> Change cluster size  </h2>
 
@@ -187,7 +177,7 @@ current:
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section ">
           <div class="c-container -padded">
             <h2 class="c-heading -h4"> Generate logs </h2>
 
@@ -197,10 +187,9 @@ current:
               </div>
               <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ slc ctl -C http://localhost:8701 log-dump</code></pre>
-              </div>
+              </div><br/>
               <div class="_col -col-1-1">
-                <pre><code class="language-bash">
-2015-03-13T23:37:19.263Z pid:36620 worker:0 INFO strong-agent API key not found, StrongOps dashboard reporting disabled.
+                <pre><code class="language-markup" style="font-size: 85%">2015-03-13T23:37:19.263Z pid:36620 worker:0 INFO strong-agent API key not found, StrongOps dashboard reporting disabled.
 2015-03-13T23:37:19.265Z pid:36620 worker:0 Generate configuration with:
 2015-03-13T23:37:19.265Z pid:36620 worker:0     npm install -g strongloop
 2015-03-13T23:37:19.265Z pid:36620 worker:0     slc strongops
@@ -242,14 +231,13 @@ current:
 2015-03-13T23:37:54.659Z pid:36630 worker:7 Web server listening at: http://localhost:3000/
 2015-03-13T23:37:55.525Z pid:36620 worker:0 ERROR supervisor worker id 4 (pid 36624) expected exit with 2
 2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor started worker 8 (pid 36632)
-2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor resized to 4
-</code></pre>
+2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor resized to 4</code></pre>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="c-section">
+        <section class="c-section x-greylight">
           <div class="c-container -padded">
             <h2 class="c-heading -h4"> Shut down Process Manager  </h2>
 
@@ -265,49 +253,19 @@ current:
           </div>
         </section>
 
-        <section class="c-section x-greylight">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Monitor app performance with Arc </h2>
-
-            <div class="c-grid ">
-              <div class="_col -col-1-2">
-                <ul>
-                  <li>Get a StrongLoop license key. <i>How?</i></li>
-                  <li>Add your license as shown at right.</li>
-                  <li>Start Arc and log in.</li>
-                  <li>Click <b>Metrics</b> to view Metrics.</li>
-                </ul>
-              </div>
-              <div class="_col -col-1-2">
-<pre><code class="language-bash">$ slc license xxxxxxxxxx
-$ slc arc
-</code></pre>
-              </div>
-            </div>
-
-            <div class="c-grid">
-              <div class="_col -col-1-1" style="margin: 1.5em 0 1.5em 0;">
-                <p>NOTE: To view metrics, you must have C compiler tools installed.  These come standard on most Linux systems.
-                See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
-              </div>
-            </div>
-
-            <div class="c-grid">
-              <div class="_col -col-3-4">
-                <img src="http://docs.strongloop.com/download/attachments/4557583/remote%20metrics.png?version=1&modificationDate=1418688309000&api=v2" class="c-fleximg"/>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
         <section class="c-section ">
           <div class="c-container -padded">
             <h2 class="c-heading -h4"> View CPU and memory profiles </h2>
 
             <div class="c-grid">
+              <div class="_col -col-1-1" >
+                <p style="border: 1px solid #808080; padding: 5px; border-radius: 3px;">NOTE: For profiling and metrics, you must have a C compiler tools on the system running the app.
+                These come standard on most Linux systems.  See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
+              </div>
+            </div>
+
+            <div class="c-grid">
               <div class="_col -col-3-4">
-            <p>Follow the instructions above to register, start Arc, and log in.</p>
             <ul>
               <li>Click <b>Profiler</b>.</li>
               <li>Click <b>Load</b> to load.  You'll see the PIDs of the app processes; the first one is selected by default.</li>
@@ -321,14 +279,42 @@ $ slc arc
             </div>
 
             <div class="c-grid">
-              <div class="_col -col-2-3">
+              <div class="_col -col-3-4">
                 <img src="/images/arc profiler 1.1.png" class="c-fleximg"/>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="c-section x-greylight"><a name="prod"></a>
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Monitor app performance with Arc </h2>
+
+            <div class="c-grid ">
+              <div class="_col -col-1-2">
+                <ul>
+                  <li>Get a StrongLoop license key by emailing sales@strongloop.com</li>
+                  <li>Add your license as shown at right.</li>
+                  <li>Start Arc and log in.</li>
+                  <li>Click <b>Metrics</b> to view Metrics.</li>
+                </ul>
+              </div>
+              <div class="_col -col-1-2">
+<pre><code class="language-bash">$ slc license &lt;your-strongloop-key-string&gt;
+$ slc arc
+</code></pre>
+              </div>
+            </div>
+<br/>
+            <div class="c-grid">
+              <div class="_col -col-3-4">
+                <img src="http://docs.strongloop.com/download/attachments/4557583/remote%20metrics.png?version=1&api=v2" class="c-fleximg"/>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section "><a name="prod"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3">Install on production host</h2>
             <div class="c-grid">
@@ -345,7 +331,7 @@ $ slc arc
           </div>
         </section>
 
-        <section class="c-section "><a name="npm-install"></a>
+        <section class="c-section x-greylight"><a name="npm-install"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h4">Install from npm and run as a service </h2>
 
@@ -393,15 +379,36 @@ $ slc arc
           </div>
         </section>
 
-        <section class="c-section x-greylight"><a name="docker"></a>
+        <section class="c-section "><a name="docker"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Installing from Docker Hub </h2>
+            <h2 class="c-heading -h4"> Install from Docker Hub </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <pre>
 <code class="language-bash">$ docker pull strongloop/strong-pm
 $ docker run -d -p 8701:8701 -p 80:3000 --name strong-pm strongloop/strong-pm</code></pre>
+              </div>
+            </div>
+            <div class="_col -col-1-1">
+              <p>For more information on Docker and Docker Hub, see <a href="https://www.docker.com/">https://www.docker.com</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section x-greylight">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Install as a Dockerized service </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-1-1">
+                Run StrongLoop PM as an OS service without installing anything. All you need is Docker!
+                Run the script below to download the image, start a StrongLoop PM container, and create an Upstart
+                or systemd config file.  The app will use port 3000; StrongLoop PM will use port 8701 and will automatically restart if your server reboots.
+              </div>
+              <div class="_col -col-1-1">
+                <pre>
+<code class="language-bash">$ curl -sO https://cdn.rawgit.com/strongloop/strong-pm/master/docker/install.sh | sudo sh</code></pre>
               </div>
             </div>
             <div class="_col -col-1-1">
@@ -435,12 +442,10 @@ Running `mv -f express-example-app1-1.0.0.tgz ../express-example-app1-1.0.0.tgz`
             <h2 class="c-heading -h4"> Deploy to remote host </h2>
             <div class="c-grid">
               <div class="_col -col-1-3">
-            <p>Control the Process Manager remotely.</p>
+            <p>Deploy your app to the remote StrongLoop PM.</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz
-$ slc ctl -C http://your.remote.host
-</code></pre>
+                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
               </div>
             </div>
           </div>
@@ -452,6 +457,7 @@ $ slc ctl -C http://your.remote.host
             <div class="c-grid">
               <div class="_col -col-1-3">
             <p>Control the Process Manager remotely.</p>
+            <p><i>What should we demo here?</i></p>
               </div>
               <div class="_col -col-2-3">
                 <pre><code class="language-bash">$ slc ctl -C http://your.remote.host:8701</code></pre>
@@ -469,20 +475,27 @@ $ slc ctl -C http://your.remote.host
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>Install Nginx load balancer</p>
-                <p>Run the StrongLoop Nginx Controller as a transient process (for development and testing).
-                For production use, <a href="http://docs.strongloop.com/display/SLC/Configuring+Nginx+load+balancer#ConfiguringNginxloadbalancer-Installingasaservice">run it as a service</a>.
-                </p>
-                <p>Add the load balancer in Arc.</p>
+                <p>Run the StrongLoop Nginx Controller service.</p>
+                <p>Add the load balancer in Arc:</p>
+                <ul>
+                  <li>Click <b>Process Manager</b>.</li>
+                  <li>Add all your Process Manager hosts.</li>
+                  <li>Click <b>Load Balancer</b>.  Enter the Nginx load balancer host and port.</li>
+                </ul>
               </div>
               <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ npm install -g strong-nginx-controller</code></pre>
-                <pre><code class="language-bash">$ sl-nginx-ctl</code></pre>
+                <pre><code class="language-bash">$ sl-nginx-ctl-install</code></pre>
+              </div>
+            </div>
+<br/>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <img src="http://docs.strongloop.com/download/attachments/5310901/arc-lb-setup.png?version=1&api=v2" class="c-fleximg"/>
               </div>
             </div>
           </div>
         </section>
-
 
       </main>
       <footer class="c-footer x-green">
