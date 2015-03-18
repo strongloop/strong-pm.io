@@ -14,13 +14,13 @@ StrongLoop Process Manager mini-site, http://strong-pm.io.
 ```
 $ git clone https://github.com/strongloop/strong-pm.io.git 
 $ cd strong-pm.io
-serving /<path>/strong-pm.io on port 3000
 ```
 
 ###Run:
 
 ```
 $ serve .
+serving /<path>/strong-pm.io on port 3000
 ```
 
 ###View site:
