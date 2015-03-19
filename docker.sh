@@ -48,10 +48,12 @@ install_systemd_service() {
 Description=StrongLoop Process Manager Container
 Author=StrongLoop <callback@strongloop.com>
 After=docker.service
+
 [Service]
 Restart=always
 ExecStart=$DOCKER start -a $CONTAINER
 ExecStop=$DOCKER stop -t 2 $CONTAINER
+
 [Install]
 WantedBy=default.target
 EOF
