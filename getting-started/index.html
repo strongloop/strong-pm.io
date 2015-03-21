@@ -36,7 +36,6 @@
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
               <li class="_nav-item -active"><a href="/getting-started">Getting started</a></li>
-              <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/prod">Use in Production</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
             </ul>
@@ -45,11 +44,10 @@
             <i class="fa fa-bars"></i>
             <span class="x-hide">Menu</span>
           </button>
-
-        <!--  <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&repo=strong-pm&type=watch" class="c-github-star js-github-star"></iframe>  -->
-
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&repo=strong-pm&type=watch&count=true" class="c-github-star js-github-star"></iframe>
         </div>
       </header>
+
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
@@ -60,16 +58,16 @@
 
         <section class="c-section x-greylight"><a name="local"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Install locally</h2>
+            <h2 class="c-heading -h3">Install </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-            <p>Install StrongLoop on your local system: This installs the client tools (Arc and <span style="font-family: monospace;">slc</span>) and StrongLoop Process Manager
-            for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
-            </p>
+                <p>Install StrongLoop: This installs the client tools (Arc and <span class="cmd">slc</span>) and StrongLoop Process Manager
+                on your workstation for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
+                </p>
 
-            <p>
-            </p>
+                <p>Later, you'll <a href="/prod">install StrongLoop PM on a remote production host</a>.
+                </p>
               </div>
               <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ npm install -g strongloop</code></pre>
@@ -80,17 +78,25 @@
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Start application locally</h2>
+            <h2 class="c-heading -h4"> Start application </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-3">
                 <p>Get an app if you don't have one handy. </p>
+              </div>
+              <div class="_col -col-2-3">
+<pre><code class="language-bash">$ git clone https://github.com/strongloop/express-example-app.git
+</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-1-3">
                 <p>Start Process Manager locally and deploy the app to it. </p>
                 <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to see the app home page.</p>
               </div>
               <div class="_col -col-2-3">
-<pre><code class="language-bash">$ git clone https://github.com/strongloop/express-example-app.git
-$ cd express-example-app
+<pre><code class="language-bash">$ cd express-example-app
 $ slc start
 App `.` started under local process manager.
   View the status:  slc ctl status
@@ -99,10 +105,11 @@ App `.` started under local process manager.
 </code></pre>
               </div>
             </div>
+
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section x-greylight"><a name="status"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h4"> Display app status </h2>
 
@@ -160,14 +167,14 @@ current:
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Generate logs </h2>
+            <h2 class="c-heading -h4"> View logs </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-                Dump the log buffer to stdout.
+                Follow your logs live.
               </div>
               <div class="_col -col-1-2" style="margin-bottom: 10px;">
-                <pre><code class="language-bash">$ slc ctl log-dump</code></pre>
+                <pre><code class="language-bash">$ slc ctl log-dump --follow</code></pre>
               </div>
 
               <div class="_col -col-1-1">
@@ -218,7 +225,7 @@ current:
 
             <div class="c-grid">
               <div class="_col -col-1-3">
-                <p>Use the <span style="font-family: monospace;">env-set</span> command to change environment variables without bringing down the app</p>
+                <p>Use the <span class="cmd">env-set</span> command to change environment variables without bringing down the app</p>
               </div>
               <div class="_col -col-2-3">
                 <pre><code class="language-bash">$ slc env-set NODE_ENV=production
@@ -228,20 +235,115 @@ Environment updated: Updated environment, restarting app </code></pre>
           </div>
         </section>
 
-        <section class="c-section x-greylight"><a name="license"></a>
+        <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Set up for profiling and viewing metrics  </h2>
-
+            <h2 class="c-heading -h4"> View CPU and memory profiles </h2>
             <div class="c-grid">
               <div class="_col -col-1-1" >
                 <p class="note">NOTE: For profiling and metrics, you must have C compiler tools on the system running the app.
                 These come standard on most Linux systems.  See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
-                <p><i>Get new license flow here...</i></p>
+                <p>To get meaningful data, run the profiler while you application is under typical or high load.</p>
               </div>
             </div>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
+<br/>
+                <ol>
+                  <li>Determine the process ID of one of the worker processes with <span class="cmd">slc ctl</span>,
+                  <a href="#status">as you did above</a>.</li>
+                  <li>Start the CPU profiler for the process, as shown in the example at right.</li>
+                  <li>Let the profiler run for five to ten seconds.</li>
+                  <li>Stop the CPU profiler, as shown in the example at right.</li>
+                </ol>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl cpu-start 22670
+Profiler started, use cpu-stop to get profile
+</code></pre>
+<pre><code class="language-bash">$ slc ctl cpu-stop 22670
+CPU profile written to `node.22670.cpuprofile`,
+load into Chrome Dev Tools
+</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-2-3" >
+                <ol>
+                  <li>Start StrongLoop Arc to view the profile data.</li>
+                  <li>Arc is free to use, but you must first <a href="https://strongloop.com/register/">register with StrongLoop</a> and login.
+                  <br/>Login to Arc with your email and password.  <br/>You'll see the Arc splash screen:
+                   </li>
+                </ol>
+              </div>
+              <div class="_col -col-1-3" >
+                <pre><code class="language-bash">$ slc arc</code></pre>
+              </div>
+            </div>
+
+            <div class="c-grid top-pad" >
+              <div class="_col -col-2-3" >
+                <img src="http://docs.strongloop.com/download/attachments/5308533/arc%20splash.png?version=1&api=v2" class="c-fleximg" />
+              </div>
+            </div>
+
+            <div class="c-grid top-pad" >
+              <div class="_col -col-2-3" >
+                  <p>In Arc, click <b>Profiler</b>.</p>
+              </div>
+            </div>
+
+            <div class="c-grid top-pad" >
+              <div class="_col -col-1-2" >
+                <p>In Arc Profiler:</p>
+                <ol>
+                  <li>Click <b>File</b> to load the profile you just generated.</li>
+                  <li>Make sure "JavScript/Node.js CPU Profile" is selected</li>
+                  <li>Click <b>Load</b>.</li>
+                  <li>Choose the .cpuprofile file you generated.  The file will then be listed in in the <b>Profiles</b> list.</li>
+                  <li>Click on the file name in the Profiles list.  You'll see the CPU profile data, as illustrated below. </li>
+                </ol>
+              </div>
+              <div class="_col -col-1-2" >
+                <img src="/images/arc-profiler-file.png" class="c-fleximg"/>
+              </div>
+            </div>
+
+            <div class="c-grid top-pad">
+              <div class="_col -col-3-4">
+                <img src="/images/arc-cpu-profile.png" class="c-fleximg"/>
+              </div>
+            </div>
+
+            <div class="c-grid top-pad" >
+              <div class="_col -col-2-3">
+                <p>Click the inverted triangle to display the data in different ways.</p>
+              </div>
+
+              <div class="_col -col-1-3">
+                <img src="/images/devtools-cpu-chooser.png" class="c-fleximg"/>
+              </div>
+            </div>
+<br/>
+            <div class="c-grid top-pad" >
+              <div class="_col -col-1-2">
+                <p>You can generate heap snapshots following the same process.
+                Just use this command instead (for example for pid 22670):</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl heap-snapshot 22670</code></pre>
+              </div>
+            </div>
+
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h4"> Monitor performance metrics with Arc </h2>
+
+            <div class="c-grid">
+              <div class="_col -col-2-5">
 
                 <ol>
                   <li>Get a StrongLoop license key by emailing sales@strongloop.com</li>
@@ -249,53 +351,11 @@ Environment updated: Updated environment, restarting app </code></pre>
                   <li>Start Arc and log in.</li>
                 </ol>
               </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc license &lt;your-strongloop-key-string&gt;
+              <div class="_col -col-3-5">
+                <pre><code class="language-bash">$ slc strongops --license &lt;your-strongloop-key-string&gt;
 $ slc arc</code></pre>
               </div>
             </div>
-
-            <div class="c-grid" style="margin-top: 10px;">
-              <div class="_col -col-2-3" >
-                <img src="http://docs.strongloop.com/download/attachments/5308533/arc%20splash.png?version=1&modificationDate=1424798146000&api=v2" class="c-fleximg" />
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <section class="c-section ">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h4"> View CPU and memory profiles </h2>
-
-            <div class="c-grid">
-              <div class="_col -col-3-4">
-                <p><i>QUESTION: Should we use slc for local profiling and metrics?</i></p>
-                <ol>
-                  <li>Click <b>Profiler</b>.</li>
-                  <li>Click <b>Load</b> to load.  You'll see the PIDs of the app processes; the first one is selected by default.</li>
-                  <li>"JavaScript/Node.js CPU Profile" is selected by default:
-                  <ul><li >Click <b>Start</b> to start CPU profiling the first worker process.</li>
-                  <li style="margin-bottom: 10px;">Wait about five seconds then click <b>Stop</b>.</li>
-                  </ul>  </li>
-                  <li>Select "Heap Snapshot" and repeat the process</li>
-                  <li>Each time you do this, the profile is added to the <b>Profiles</b> list on the left. Select each profile in the
-                  list to view it; for example as shown below.</li>
-                </ol>
-              </div>
-            </div>
-
-            <div class="c-grid" style="margin-top: 10px;">
-              <div class="_col -col-3-4">
-                <img src="/images/arc profiler 1.1.png" class="c-fleximg"/>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="c-section x-greylight">
-          <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Monitor app performance metrics with Arc </h2>
 
             <div class="c-grid ">
               <div class="_col -col-3-4">

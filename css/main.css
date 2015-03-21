@@ -1231,7 +1231,8 @@ li > dl {
 
 pre[class*="language-"] {
     width: 100%;
-    margin: 1rem 0;
+/*    margin: 1rem 0; */
+    margin: 2rem 0 1rem 0;
     padding: 1rem;
     -webkit-border-radius: 0;
     border-radius: 0;
@@ -1290,6 +1291,13 @@ pre[class*="language-"] {
     border: 1px solid #808080;
     padding: 5px;
     border-radius: 3px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin: .7em 2em 0 2em;
+}
+
+.cmd {
+    font-family: monospace;
+}
+
+.top-pad {
+    margin-top: 20px;
 }

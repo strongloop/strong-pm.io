@@ -36,7 +36,6 @@
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item -active"><a href="/">About</a></li>
               <li class="_nav-item"><a href="/getting-started">Getting started</a></li>
-              <li class="_nav-item"><a href="/examples">Examples</a></li>
               <li class="_nav-item"><a href="/prod">Use in Production</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
             </ul>
@@ -45,7 +44,7 @@
             <i class="fa fa-bars"></i>
             <span class="x-hide">Menu</span>
           </button>
-        <!--  <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe> -->
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&repo=strong-pm&type=watch&count=true" class="c-github-star js-github-star"></iframe>
         </div>
         <div class="c-section -intro">
           <div class="c-container">
@@ -53,11 +52,14 @@
             <div class="c-grid">
               <div class="_col -col-1-2 -offset-1-4">
                 <div class="c-terminal">
-                  <p>$ npm install -g strongloop</p>
+                  <p>$ npm install -g strongloop<br/>
+                  $ cd &lt;my-app&gt;<br/>
+                  $ slc start
+                  </my-app></p>
                 </div>
               </div>
             </div>
-            <p class="learn-more x-center"><a href="/getting-started" class="c-button -lg x-center">Get Started</a></p>
+            <p class="learn-more x-center"><a href="/getting-started" class="c-button -lg x-center">Learn more!</a></p>
           </div>
         </div>
       </header>
@@ -72,13 +74,18 @@
 
             <div class="c-grid">
               <div class="_col -col-2-3">
-                <p>StrongLoop provides tools for the entire Node devops lifecyle.</p>
+                <p>
+                  StrongLoop PM is a production process manager for Node.js applications with built-in load balancing, monitoring, multi-host deployment and a graphical console:
+                </p>
                 <ul class="fa-ul">
                   <li><i class="fa-li fa fa-check"></i><a href="#build-deploy">Build, package, and deploy</a> your Node application to a local or remote system.</li>
                   <li><i class="fa-li fa fa-check"></i><a href="#profile">View CPU profiles and heap snapshots</a> to optimize performance and diagnose memory leaks.</li>
-                  <li><i class="fa-li fa fa-check"></i><a href="#pm">Manage processes and clusters</a> using StrongLoop Process Manager.</li>
+                  <li><i class="fa-li fa fa-check"></i><a href="#pm">Keep processes and clusters alive forever</a>.</li>
+                  <li><i class="fa-li fa fa-check"></i><a href="#pm">Built-in load balancing</li>
                   <li><i class="fa-li fa fa-check"></i><a href="#metrics">View performance metrics</a> on your application.</li>
-                  <li>Use graphical tool StrongLoop Arc or command-line tool, <b>slc</b>.</li>
+                  <li><i class="fa-li fa fa-check"></i>Use graphical tool or CLI.</li>
+                  <li><i class="fa-li fa fa-check"></i>Open source and supported by StrongLoop.</li>
+                  <li><i class="fa-li fa fa-check"></i>Docker support.</li>
                 </ul>
               </div>
               <div class="_col -col-1-3 x-flex-e"><img src="/images/comb.svg" class="c-fleximg -pull-down -last"/></div>
@@ -93,10 +100,10 @@
             <div class="c-grid">
               <div class="_col -col-2-3">
                 <ul class="fa-ul">
-                  <li><i class="fa-li fa fa-check"></i>Automated build and multi-host deploy.</li>
+                  <li><i class="fa-li fa fa-check"></i>Multi-host deploy.</li>
                   <li><i class="fa-li fa fa-check"></i>Zero-downtime application restarts and upgrades.</li>
                   <li><i class="fa-li fa fa-check"></i>Install dependencies, run custom build steps, and prune development dependencies without affecting your source tree.</li>
-                  <li><i class="fa-li fa fa-check"></i>Create an npm package or commit the build onto a Git deploy branch.</li>
+                  <li><i class="fa-li fa fa-check"></i>SSH, HTTP, or Git-based deploy </li>
                 </ul>
               </div>
             </div>
@@ -123,16 +130,17 @@
         <section class="c-section x-greylight">
           <a name="pm"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3"><img src="images/arc-pm-icon.png" class="icon-img" />Process Manager</h2>
+            <h2 class="c-heading -h3"><img src="images/arc-pm-icon.png" class="icon-img" />Clustering and process management</h2>
             <div class="c-grid">
               <div class="_col -col-2-3">
                 <ul class="fa-ul">
-                  <li><i class="fa-li fa fa-check"></i>Local and remote process management for Node & Express apps.</li>
+                  <li><i class="fa-li fa fa-check"></i>Use all available CPU cores </li>
                   <li><i class="fa-li fa fa-check"></i>Log aggregation and management</li>
                   <li><i class="fa-li fa fa-check"></i> Change cluster size, view clustering info remotely</li>
-                  <li><i class="fa-li fa fa-check"></i> ???</li>
-
+                  <li><i class="fa-li fa fa-check"></i> Set up secure access via SSH / HTTPS</li>
                   <li><i class="fa-li fa fa-check"></i>Manage Nginx load-balancer for multi-host deployments.</li>
+                  <li><i class="fa-li fa fa-check"></i>Automatic restart on failure.</li>
+
                 </ul>
               </div>
             </div>
@@ -147,7 +155,8 @@
               <div class="_col -col-1-2">
                 <ul class="fa-ul">
                   <li><i class="fa-li fa fa-check"></i>View performance metrics in Arc</li>
-                  <li><i class="fa-li fa fa-check"></i> Use your own StatsD console if you prefer.</li>
+                  <li><i class="fa-li fa fa-check"></i> Use your own console if you prefer: StatsD, DataDog, Graphite, or Splunk.</li>
+                  <li><i class="fa-li fa fa-check"></i>Third-party probe metrics, for example for Memcached, backends such as MongoDB, Redis, MySQL, and so on. </li>
                 </ul>
               </div>
             </div>
