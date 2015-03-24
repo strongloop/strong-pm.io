@@ -23,6 +23,12 @@ $ serve .
 serving /<path>/strong-pm.io on port 3000
 ```
 
+To run on a differen port:
+
+```
+$ serve -p 3001 .
+```
+
 ###View site:
 
 Load http://localhost:3000 to view the site.
