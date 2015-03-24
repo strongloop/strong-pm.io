@@ -35,8 +35,8 @@
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
-              <li class="_nav-item "><a href="/getting-started">Getting started</a></li>
-              <li class="_nav-item -active"><a href="/prod">Use in Production</a></li>
+              <li class="_nav-item "><a href="/getting-started">Local Use</a></li>
+              <li class="_nav-item -active"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
             </ul>
           </nav>
@@ -51,7 +51,7 @@
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
-            <h1 class="c-heading -h2">Deploying remotely to production</h1>
+            <h1 class="c-heading -h2">Using remotely in production</h1>
             <p></p>
           </div>
         </section>
@@ -61,9 +61,10 @@
             <h2 class="c-heading -h3">Install on production host</h2>
             <div class="c-grid">
               <div class="_col -col-1-1">
-                <p>Install StrongLoop Process Manager on a production host using either npm or Docker.
-                Then you can remotely deploy and control your app using the StrongLoop client tools (Arc or slc).  Either:
+                <p>Install StrongLoop Process Manager on a remote host using either npm or Docker.
+                Then you can remotely deploy and control your app from your workstation using the StrongLoop tools.
                 </p>
+                <p>Either:</p>
                 <ul>
                   <li><a href="#npm-install">Install with npm</a></li>
                   <li><a href="#docker">Install with Docker Hub</a></li>
@@ -88,35 +89,38 @@
 
             <div class="c-grid" style="margin-bottom: 10px;">
               <div class="_col -col-1-1">
-                <p>On Linux distributions that support <b>Upstart</b> or <b>systemd</b>, run Process Manager as a service
-                to ensure it starts when the system boots, aggregates logs properly, and so on.</p>
+                <p>On Linux distributions that support <b>Upstart</b> or <b>systemd</b>, install Process Manager as a service
+                to ensure it starts when the system boots, aggregates logs properly, and so on; then start it.</p>
                 <br/>
               </div>
 
               <div class="_col -col-1-3">
-                <p>Ubuntu 12.04+:</p>
+                <p><b>Ubuntu 12.04+</b>:</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ sudo sl-pm-install</code></pre>
-              </div>
+                <pre><code class="language-bash">$ sudo sl-pm-install
+$ sudo /sbin/initctl start strong-pm </code></pre>
+</div>
             </div>
 
             <div class="c-grid" style="margin-bottom: 10px;">
               <div class="_col -col-1-3">
-                <p>Red Hat Enterprise Linux 7+:</p>
+                <p><b>Red Hat Enterprise Linux 7+</b>:</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ sudo sl-pm-install --systemd</code></pre>
-              </div>
+                <pre><code class="language-bash">$ sudo sl-pm-install --systemd
+$ sudo /usr/bin/systemctl start strong-pm </code></pre>
+</div>
             </div>
 
             <div class="c-grid">
               <div class="_col -col-1-3">
-                <p>Red Hat Enterprise Linux  5 and 6:</p>
+                <p><b>Red Hat Enterprise Linux 5 and 6</b>:</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ sudo sl-pm-install --upstart=0.6 </code></pre>
-              </div>
+                <pre><code class="language-bash">$ sudo sl-pm-install --upstart=0.6
+$ sudo /sbin/initctl start strong-pm</code></pre>
+</div>
             </div>
           </div>
         </section>
@@ -127,7 +131,7 @@
 
             <div class="c-grid">
               <div class="_col -col-1-1">
-                Run StrongLoop PM as an OS service without installing anything. All you need is Docker!
+                Run StrongLoop PM as a service without installing anything. All you need is Docker!
                 </p><p>
                 Run the script below to download the image, start a StrongLoop PM container, and create an Upstart
                 or systemd config file.  The app will use port 3000; StrongLoop PM will use port 8701 and will
@@ -502,8 +506,8 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           <nav class="_nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
-              <li class="_nav-item -active"><a href="/getting-started">Getting started</a></li>
-              <li class="_nav-item"><a href="/examples">Examples</a></li>
+              <li class="_nav-item -active"><a href="/getting-started">Local Use</a></li>
+              <li class="_nav-item"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
 

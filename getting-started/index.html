@@ -35,8 +35,8 @@
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
-              <li class="_nav-item -active"><a href="/getting-started">Getting started</a></li>
-              <li class="_nav-item"><a href="/prod">Use in Production</a></li>
+              <li class="_nav-item -active"><a href="/getting-started">Local Use</a></li>
+              <li class="_nav-item"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
             </ul>
           </nav>
@@ -51,8 +51,10 @@
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
-            <h1 class="c-heading -h2">Getting started</h1>
+            <h1 class="c-heading -h2">Use locally on your workstation</h1>
             <p><b>Assuming you have already installed Node...</b></p>
+            
+            <p>For information on using on a production host, see <a href="/prod">Remote Use</a>.</p>
           </div>
         </section>
 
@@ -64,9 +66,6 @@
               <div class="_col -col-1-2">
                 <p>Install StrongLoop: This installs the client tools (Arc and <span class="cmd">slc</span>) and StrongLoop Process Manager
                 on your workstation for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
-                </p>
-
-                <p>Later, you'll <a href="/prod">install StrongLoop PM on a remote production host</a>.
                 </p>
               </div>
               <div class="_col -col-1-2">
@@ -124,25 +123,20 @@ App `.` started under local process manager.
               <div class="_col -col-1-1">
                 <pre><code class="language-bash">$ slc ctl
 manager:
-  pid:                22642
+  pid:                14860
   port:               8701
   base:               /Users/rand/.strong-pm
-  config:             undefined
 current:
   status:             started
-  pid:                22669
+  pid:                14861
   link:               /Users/rand/StrongLoop/express-example-app
-  current:            826d11fe9a7f5b04e586.1426200263251
-  branch:             npm-pack
+  current:            express-example-app
+  branch:             local-directory
   worker count:       4
-    [1]:              cluster id 1, pid 22670
-    [2]:              cluster id 2, pid 22671
-    [3]:              cluster id 3, pid 22672
-    [4]:              cluster id 4, pid 22673
-  config:             default
-    start command:    sl-run --cluster=CPU
-    stop signal:      SIGTERM
-    replace signal:   SIGHUP
+    [1]:              cluster id 1, pid 14862
+    [2]:              cluster id 2, pid 14863
+    [3]:              cluster id 3, pid 14864
+    [4]:              cluster id 4, pid 14865
 </code></pre>
               </div>
             </div>
@@ -162,6 +156,20 @@ current:
                 <pre><code class="language-bash">$ slc ctl set-size 2</code></pre>
               </div>
             </div>
+<br/>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+            <p>Now if you display status again, you'll see only two worker processes running:</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl
+...
+  worker count:       2
+    [1]:              cluster id 1, pid 14984
+    [2]:              cluster id 2, pid 14985</code></pre>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -352,7 +360,7 @@ load into Chrome Dev Tools
                 </ol>
               </div>
               <div class="_col -col-3-5">
-                <pre><code class="language-bash">$ slc strongops --license &lt;your-strongloop-key-string&gt;
+                <pre><code class="language-bash">$ slc strongops --license &lt;your-strongloop-key&gt;
 $ slc arc</code></pre>
               </div>
             </div>
@@ -362,14 +370,14 @@ $ slc arc</code></pre>
                   <p>Click <b>Metrics</b> to view Metrics.</p>
                   <p>Arc will display the process IDs (PIDs) for the local app and select the first PID.
                   It will then display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption.</p>
-                  <p>For details on the available metrics,
-                  see <a href="http://docs.strongloop.com/display/SLC/Viewing+metrics+with+Arc#ViewingmetricswithArc-Availablemetrics">Available metrics</a>.</p>
               </div>
             </div>
-<br/>
+
             <div class="c-grid">
               <div class="_col -col-3-4">
-                <img src="http://docs.strongloop.com/download/attachments/4557583/remote%20metrics.png?version=1&api=v2" class="c-fleximg"/>
+                <img src="/images/arc-metrics.png" class="c-fleximg"/>
+              <p>For details on the available metrics,
+                see <a href="http://docs.strongloop.com/display/SLC/Viewing+metrics+with+Arc#ViewingmetricswithArc-Availablemetrics">Available metrics</a>.</p>
               </div>
             </div>
           </div>
@@ -381,8 +389,8 @@ $ slc arc</code></pre>
           <nav class="_nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
-              <li class="_nav-item -active"><a href="/getting-started">Getting started</a></li>
-              <li class="_nav-item"><a href="/examples">Examples</a></li>
+              <li class="_nav-item -active"><a href="/getting-started">Local Use</a></li>
+              <li class="_nav-item"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
 

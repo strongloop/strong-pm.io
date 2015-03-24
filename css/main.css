@@ -951,7 +951,7 @@ li > dl {
     display: inline-block;
     margin: 0 1rem 0 0;
     content: "";
-    background: url("/images/slpm logo.png") no-repeat;
+    background: url("/images/slpm logo.svg") no-repeat;
 }
 
 @media (max-width:567px) {
@@ -1300,4 +1300,27 @@ pre[class*="language-"] {
 
 .top-pad {
     margin-top: 20px;
+}
+
+table.comp, table.comp tr td, table.comp tr th {
+    border: 1px solid #6e6e6e;
+}
+
+table.comp tr th {
+    font-size: 90%;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #193819;
+}
+
+table.comp tr td {
+    font-size: 75%;
+    padding: 5px;
+}
+
+td.col1 {
+    background-color: #193819;
+}
+#feature {
+    background-color: #002200;
 }
