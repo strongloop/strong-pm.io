@@ -53,7 +53,7 @@
           <div class="c-container -padded">
             <h1 class="c-heading -h2">Use locally on your workstation</h1>
             <p><b>Assuming you have already installed Node...</b></p>
-            
+
             <p>For information on using on a production host, see <a href="/prod">Remote Use</a>.</p>
           </div>
         </section>
@@ -77,7 +77,7 @@
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Start application </h2>
+            <h2 class="c-heading -h3"> Start application </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-3">
@@ -110,7 +110,7 @@ App `.` started under local process manager.
 
         <section class="c-section x-greylight"><a name="status"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Display app status </h2>
+            <h2 class="c-heading -h3"> Display app status </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1">
@@ -145,7 +145,7 @@ current:
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Change cluster size  </h2>
+            <h2 class="c-heading -h3"> Change cluster size  </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
@@ -175,7 +175,7 @@ current:
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> View logs </h2>
+            <h2 class="c-heading -h3"> View logs </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
@@ -229,7 +229,7 @@ current:
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Update your environment with no downtime </h2>
+            <h2 class="c-heading -h3"> Update your environment with no downtime </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-3">
@@ -245,7 +245,7 @@ Environment updated: Updated environment, restarting app </code></pre>
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> View CPU and memory profiles </h2>
+            <h2 class="c-heading -h3"> View CPU and memory profiles </h2>
             <div class="c-grid">
               <div class="_col -col-1-1" >
                 <p class="note">NOTE: For profiling and metrics, you must have C compiler tools on the system running the app.
@@ -346,20 +346,23 @@ load into Chrome Dev Tools
 
         </section>
 
-        <section class="c-section ">
+        <section class="c-section "><a name="license"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Monitor performance metrics with Arc </h2>
+            <h2 class="c-heading -h3"> Monitor performance metrics with Arc </h2>
 
             <div class="c-grid">
-              <div class="_col -col-2-5">
-
+              <div class="_col -col-1-1" style="margin-bottom: 10px;">
+                <p>To monitor performance metrics, you must set up your app a StrongLoop license key.
+                To get a trial license for free:</p>
+              </div>
+              <div class="_col -col-1-2">
                 <ol>
-                  <li>Get a StrongLoop license key by emailing sales@strongloop.com</li>
+                  <li>Get a StrongLoop license key by emailing <span class="email">sales@strongloop.com</span>.</li>
                   <li>Add your license as shown at right.</li>
                   <li>Start Arc and log in.</li>
                 </ol>
               </div>
-              <div class="_col -col-3-5">
+              <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ slc strongops --license &lt;your-strongloop-key&gt;
 $ slc arc</code></pre>
               </div>

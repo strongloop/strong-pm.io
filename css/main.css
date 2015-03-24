@@ -1298,6 +1298,10 @@ pre[class*="language-"] {
     font-family: monospace;
 }
 
+.email {
+    color: #37bd33;
+}
+
 .top-pad {
     margin-top: 20px;
 }

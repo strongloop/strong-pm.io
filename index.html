@@ -368,12 +368,20 @@
           <div class="c-container -padded">
             <h2 class="c-heading -h3"><img src="images/arc-metrics-icon.png" class="icon-img" />Metrics</h2>
             <div class="c-grid">
-              <div class="_col -col-1-2">
+              <div class="_col -col-2-3">
                 <ul class="fa-ul">
-                  <li><i class="fa-li fa fa-check"></i>View performance metrics in Arc</li>
-                  <li><i class="fa-li fa fa-check"></i> Use your own console if you prefer: StatsD, DataDog, Graphite, or Splunk.</li>
+                  <li><i class="fa-li fa fa-check"></i>View performance metrics in Arc.</li>
+                  <li><i class="fa-li fa fa-check"></i> Publish metrics to <a href="https://github.com/etsy/statsd">etsy/statsd</a>
+                  compatible servers, and view in 3rd-party console such as:
+                    <ul style="margin-top: 0;">
+                      <li><a href="https://www.datadoghq.com/">DataDog</a>, as well as natively to</li>
+                      <li>Natively to <a href="http://graphite.readthedocs.org/en/latest">Graphite</a> or <a href="http://www.splunk.com">Splunk</a>.</li>
+                      <li>Even syslog and raw log files.</li>
+                    </ul>
+                  </li>
                   <li><i class="fa-li fa fa-check"></i>Third-party probe metrics, for example for Memcached, backends such as MongoDB, Redis, MySQL, and so on. </li>
                 </ul>
+
               </div>
             </div>
           </div>
