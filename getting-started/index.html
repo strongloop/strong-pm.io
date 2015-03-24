@@ -64,9 +64,10 @@
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>Install StrongLoop: This installs the client tools (Arc and <span class="cmd">slc</span>) and StrongLoop Process Manager
-                on your workstation for development and testing.  For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.
+                <p>Install the full StrongLoop module that includes the client tools (Arc and <span class="cmd">slc</span>) and StrongLoop Process Manager
+                on your workstation for development and testing.
                 </p>
+                <p>For more information, see <a href="http://docs.strongloop.com/display/SL">Installing StrongLoop</a>.</p>
               </div>
               <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ npm install -g strongloop</code></pre>
@@ -148,21 +149,20 @@ current:
             <h2 class="c-heading -h3"> Change cluster size  </h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-2">
+              <div class="_col -col-1-1">
             <p>By default the Process Manager runs one process per CPU.  So, on a four-core system
-            it will run the app in a four-process cluster.  You can easily change the cluster size.</p>
-              </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl set-size 2</code></pre>
+            it will run the app in a four-process cluster.  </p>
               </div>
             </div>
 <br/>
             <div class="c-grid">
               <div class="_col -col-1-2">
+            <p>  You can easily change the cluster size.</p>
             <p>Now if you display status again, you'll see only two worker processes running:</p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl
+                <pre><code class="language-bash">$ slc ctl set-size 2
+$ slc ctl
 ...
   worker count:       2
     [1]:              cluster id 1, pid 14984
