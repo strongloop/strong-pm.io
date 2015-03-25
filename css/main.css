@@ -1306,6 +1306,10 @@ pre[class*="language-"] {
     margin-top: 20px;
 }
 
+.push-up {
+    margin-top: -20px !important;
+}
+
 table.comp, table.comp tr td, table.comp tr th {
     border: 1px solid #6e6e6e;
 }
@@ -1335,4 +1339,5 @@ td.col1 {
 
 #feature {
     background-color: #002200;
+    width: 12rem;
 }

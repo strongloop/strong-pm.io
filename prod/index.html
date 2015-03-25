@@ -222,7 +222,8 @@ Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
               <div class="_col -col-1-3">
             <p>Alternatively, deploy the npm package to the remote StrongLoop PM.</p>
               </div>
-              <div class="_col -col-2-3">
+              <br/>
+              <div class="_col -col-2-3 top-pad">
                 <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
               </div>
             </div>
@@ -243,11 +244,9 @@ Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>Get a quick status overview with all worker PIDs, cluster IDs, other key information.</p>
-
-               <!-- <p>NOTE: By default, StrongLoop PM control endpoint uses port 8701.</p>  -->
-
               </div>
-            </div><div class="c-grid">
+            </div>
+            <div class="c-grid top-pad">
               <div class="_col -col-1-1">
                 <pre><code class="language-bash">$ slc ctl --control http://your.remote.host
 manager:
@@ -284,7 +283,7 @@ current:
             it will run the app in a four-process cluster.  </p>
               </div>
             </div>
-<br/>
+
             <div class="c-grid">
               <div class="_col -col-1-3">
             <p>  You can easily change the cluster size.</p>
@@ -325,7 +324,7 @@ $ slc ctl --control http://your.remote.host
 
             <div class="c-grid">
               <div class="_col -col-1-3">
-                Dump the log buffer to the console.
+                Follow your logs live in the console.
                 <!-- Show a different log example here? -->
               </div>
               <div class="_col -col-2-3" style="margin-bottom: 10px;">
@@ -375,7 +374,7 @@ $ slc ctl --control http://your.remote.host
                 Of course you need to set up secure access to your servers.
                 Fortunately, StrongLoop PM supports secure connections using SSH.</p>
               </div>
-              <div class="_col -col-1-2 top-pad">
+              <div class="_col -col-1-2">
                 <p>First, verify that you have SSH remote access as follows:</p>
                 <p>Note: Your remote user name may be something other than "root".</p>
               </div>
@@ -422,10 +421,8 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 <br/>
             <div class="c-grid">
               <div class="_col -col-1-2">
-
-                  <p>On your local (development) system, start StrongLoop Arc.</p>
-                  <p>Log in, if you're not already logged in.</p>
-
+                <p>On your local (development) system, start StrongLoop Arc.</p>
+                <p>Log in, if you're not already logged in.</p>
                 <p>You'll see the StrongLoop Arc splash screen:</p>
               </div>
               <div class="_col -col-1-2">
@@ -433,16 +430,19 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
               </div>
             </div>
 
-            <div class="c-grid" style="margin-top: 10px;">
-              <div class="_col -col-2-3" >
-                <img src="http://docs.strongloop.com/download/attachments/5308533/arc%20splash.png?version=1&modificationDate=1424798146000&api=v2" class="c-fleximg" />
+            <div class="c-grid top-pad" >
+              <div class="_col -col-1-2" >
+                <img src="/images/arc splash.png" class="c-fleximg" />
+              </div>
+              <div class="_col -col-1-2">
+                  <p style="margin-top: 30px;">In Arc, click <b>Profiler</b>.</p>
               </div>
             </div>
 <br/>
             <div class="c-grid">
               <div class="_col -col-2-3">
-               <ol>
-                  <li>Click <b>Profiler</b>.</li>
+                <p>In Arc Profiler:</p>
+                <ol>
                   <li>Enter the host name of your production system and the port on which StrongLoop PM is running (8701 by default).</li>
                   <li>Click <b>Load</b> to load.  You'll see the PIDs of the app processes; the first one is selected by default.</li>
                   <li>"JavaScript/Node.js CPU Profile" is selected by default. Click <b>Start</b> to start CPU profiling the
@@ -467,12 +467,12 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 
         <section class="c-section">
           <div class="c-container -padded">
-            <h2 class="c-heading -h3"> Monitor app performance metrics with Arc </h2>
+            <h2 class="c-heading -h3"> Monitor performance metrics </h2>
 
             <div class="c-grid ">
               <div class="_col -col-3-4" style="margin-bottom: 10px;">
-                <p>If you haven't already done so, set up your StrongLoop license properly for monitoring performance metrics.
-                See <a href="/getting-started#license">Getting Started </a> for instructions.  Then:</p>
+                <p>If you haven't already done so, set up your StrongLoop license key for monitoring performance metrics.
+                See <a href="/getting-started#license">Local Use</a> for instructions.</p>
               </div>
               <div class="_col -col-2-3">
 
@@ -492,7 +492,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
                    then display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption.</p>
                   <p>For details on the available metrics,
                   see <a href="http://docs.strongloop.com/display/SLC/Viewing+metrics+with+Arc#ViewingmetricswithArc-Availablemetrics">Available metrics</a>.</p>
-                <img src="http://docs.strongloop.com/download/attachments/4557583/remote%20metrics.png?version=1&api=v2" class="c-fleximg"/>
+                <img src="/images/arc-metrics.png" class="c-fleximg"/>
               </div>
             </div>
           </div>
@@ -502,7 +502,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Set up event loop triggered profiling  </h2>
             <div class="_col -col-1-2">
-              <p>Use the event loop triggered profiling  to start CPU profiling when the Node event loop stalls.
+              <p>Use <i>event loop triggered profiling</i> to start CPU profiling when the Node event loop stalls.
               Simply add a timeout argument to specify the threshold: if the
               event loop stalls for longer than that time, then CPU profiling starts.
               It stops when the event loop resumes execution.</p>
@@ -527,25 +527,29 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>Run the StrongLoop Nginx Controller service.</p>
-                <p>Add the load balancer in Arc:</p>
-                <ul>
+                <p>First, install and run the StrongLoop Nginx Controller service on your load balancer host.</p>
+                <br/>
+                <p>Then add the load balancer in Arc:</p>
+                <ol>
                   <li>Click <b>Process Manager</b>.</li>
                   <li>Add all your Process Manager hosts.</li>
                   <li>Click <b>Load Balancer</b>.  Enter the Nginx load balancer host and port.</li>
-                </ul>
+                </ol>
               </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ npm install -g strong-nginx-controller</code></pre>
-                <pre><code class="language-bash">$ sl-nginx-ctl-install</code></pre>
+              <div class="_col -col-1-2 push-up">
+                <pre><code class="language-bash">$ npm install -g strong-nginx-controller
+$ sl-nginx-ctl-install</code></pre>
+                <img src="/images/arc-lb-setup.png" class="c-fleximg"/>
               </div>
             </div>
-<br/>
+            <!--
+
             <div class="c-grid">
               <div class="_col -col-1-2">
                 <img src="http://docs.strongloop.com/download/attachments/5310901/arc-lb-setup.png?version=1&api=v2" class="c-fleximg"/>
               </div>
             </div>
+            -->
           </div>
         </section>
 
