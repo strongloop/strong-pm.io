@@ -35,6 +35,7 @@
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
+              <li class="_nav-item "><a href="/examples">Compare</a></li>
               <li class="_nav-item "><a href="/getting-started">Local Use</a></li>
               <li class="_nav-item -active"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
@@ -51,7 +52,7 @@
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
-            <h1 class="c-heading -h2">Using remotely in production</h1>
+            <h1 class="c-heading -h2">Use remotely in production</h1>
 
             <div class="c-grid">
               <div class="_col -col-2-3">
@@ -67,13 +68,13 @@
             <h2 class="c-heading -h3">Install on remote host</h2>
             <div class="c-grid">
               <div class="_col -col-1-1">
-                <p>Install StrongLoop Process Manager on a remote host using either npm or Docker.
+                <p>Install StrongLoop Process Manager on a remote host from either npm or Docker.
                 Then you can remotely deploy and control your app from your workstation using the StrongLoop tools.
                 </p>
                 <p>Either:</p>
                 <ul>
                   <li><a href="#npm-install">Install with npm</a></li>
-                  <li><a href="#docker">Install with Docker Hub</a></li>
+                  <li><a href="#docker">Install from Docker Hub</a></li>
                 </ul>
               </div>
             </div>
@@ -133,11 +134,11 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
 
         <section class="c-section x-greylight"><a name="docker"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h4">OR Install with Docker Hub </h2>
+            <h2 class="c-heading -h4">Or: Install and run from Docker Hub</h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1">
-                Run StrongLoop PM as a service without installing anything. All you need is Docker!
+                Run StrongLoop PM as a service without installing anything.  You must have Docker installed on the system.
                 </p><p>
                 Run the script below to download the image, start a StrongLoop PM container, and create an Upstart
                 or systemd config file.  The app will use port 3000; StrongLoop PM will use port 8701 and will
@@ -148,6 +149,7 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
               </div>
             </div>
             <div class="_col -col-1-1">
+              <!-- Link to our docs instead -->
               <p>For more information on Docker and Docker Hub, see <a href="https://www.docker.com/">https://www.docker.com</a>.</p>
             </div>
           </div>
@@ -161,7 +163,7 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
             to install StrongLoop on your workstation and have a Node app to deploy.</p>
 
             <p>Back on your workstation, you're going to build your app for deployment.
-            You can either build a .tgz (tar file) or build to a Git branch.
+            You can either build an npm package (a .tgz file) or build to a Git branch.
             </p>
 
             <div class="c-grid">
@@ -186,7 +188,7 @@ Committed build products onto `deploy`
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>If your project code is not in a Git repository, then by default <span style="font-family: monospace;">slc build</span>
-                will build a .tgz archive.<br/>
+                will build an npm package (a .tgz file).<br/>
                 See <a href="http://docs.strongloop.com/display/SLC/Creating+a+build+archive">Creating a build archive</a> for details.
                 </p>
               </div>
@@ -205,24 +207,25 @@ Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
         <section class="c-section x-greylight">
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Deploy to remote host </h2>
+
             <div class="c-grid">
               <div class="_col -col-1-3">
-            <p>Deploy the app package .tgz to the remote StrongLoop PM.</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
-              </div>
-            </div>
-<br/>
-            <div class="c-grid">
-              <div class="_col -col-1-3">
-            <p>Alternatively, deploy the Git 'deploy' branch....</p>
+            <p>Deploy your app from the Git 'deploy' branch....</p>
               </div>
               <div class="_col -col-2-3">
                 <pre><code class="language-bash">$ slc deploy http://your.remote.host</code></pre>
               </div>
             </div>
 
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+            <p>Alternatively, deploy the npm package to the remote StrongLoop PM.</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
+              </div>
+            </div>
+<br/>
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>Your app is now deployed!</p>
@@ -250,7 +253,6 @@ manager:
   pid:                22642
   port:               8701
   base:               /Users/rand/.strong-pm
-  config:             undefined
 current:
   status:             started
   pid:                22669
@@ -262,7 +264,6 @@ current:
     [2]:              cluster id 2, pid 22671
     [3]:              cluster id 3, pid 22672
     [4]:              cluster id 4, pid 22673
-  config:             default
     start command:    sl-run --cluster=CPU
     stop signal:      SIGTERM
     replace signal:   SIGHUP
@@ -306,7 +307,7 @@ $ slc ctl --control http://your.remote.host
             <h2 class="c-heading -h3">Re-deploy app with zero downtime  </h2>
             <div class="c-grid" >
               <div class="_col -col-1-2">
-                <p>When your code changes, simply rebuild and re-deploy it to the production host.
+                <p>When your code changes, simply rebuild and re-deploy it to the production host (for example, using Git deploy).
                   StrongLoop Process Manager automatically performs a rolling restart of all processes, so you get zero downtime.
                 </p>
               </div>
@@ -323,7 +324,7 @@ $ slc ctl --control http://your.remote.host
 
             <div class="c-grid">
               <div class="_col -col-1-3">
-                Dump the log buffer to stdout.
+                Dump the log buffer to the console.
                 <!-- Show a different log example here? -->
               </div>
               <div class="_col -col-2-3" style="margin-bottom: 10px;">
@@ -379,12 +380,12 @@ $ slc ctl --control http://your.remote.host
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>You may have noticed that slc has been connecting to your production server over HTTP.
-                Of course, you don't want to allow just anyone to deploy to and control your server, so you need to set up secure access.
+                Of course you need to set up secure access to your servers.
                 Fortunately, StrongLoop PM supports secure connections using SSH.</p>
               </div>
-              <div class="_col -col-1-2">
-                <br/>
+              <div class="_col -col-1-2 top-pad">
                 <p>First, verify that you have SSH remote access as follows:</p>
+                <p>Note: Your remote user name may be something other than "root".</p>
               </div>
               <div class="_col -col-1-2">
                 <pre><code class="language-bash">$ ssh root@the.remote.host
@@ -394,15 +395,20 @@ $ SSH_USER=root slc ctl status</code></pre>
 <br/>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>Then set up SSH key-based authentication, if you haven't done so already:</p>
+                <p>Then set up SSH key-based authentication, if you haven't done so already.
+
+                </p>
                 <p>
-                Many developers will already have this configured for secure access to GitHub and remote servers.
+                You just need to set some environment variables, then enter these commands:
+                From then on you can use <span class="cmd">http+ssh</span>
+                instead of plain old <span class="cmd">http</span> to control and deploy securely to your server.
+                </p>
+                <p>
                 See <a href="https://help.github.com/articles/generating-ssh-keys/">Generating SSH keys</a> if you need some guidance. </p>
-                <p>Then you just need to set some environment variables, and from then on you can use <span class="cmd">http+ssh</span>
-                instead of plain old HTTP to control and deploy securely to your server.  </p>
+                </p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ export SSH_USER=ubuntu
+                <pre><code class="language-bash">$ export SSH_USER=root
 $ export SSH_KEY=~/.ssh/ec2.rsa
 $ slc deploy http+ssh://the.remote.host
 $ slc ctl -C http+ssh://the.remote.host status</code></pre>
@@ -417,17 +423,17 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 
             <div class="c-grid">
               <div class="_col -col-1-1" >
-                <p class="note">NOTE: For profiling and metrics, you must have C compiler tools on the system running the app.
+                <p class="note">NOTE: For profiling and metrics, you must have compiler tools on the system running the app.
                 These come standard on most Linux systems.  See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
               </div>
             </div>
 <br/>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <ol>
-                  <li>On your local (development) system, start StrongLoop Arc.</li>
-                  <li>Log in, if you're not already logged in.</li>
-                </ol>
+
+                  <p>On your local (development) system, start StrongLoop Arc.</p>
+                  <p>Log in, if you're not already logged in.</p>
+
                 <p>You'll see the StrongLoop Arc splash screen:</p>
               </div>
               <div class="_col -col-1-2">
@@ -477,10 +483,11 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
                 See <a href="/getting-started#license">Getting Started </a> for instructions.  Then:</p>
               </div>
               <div class="_col -col-2-3">
-                <ol>
-                  <li>Click <b>Metrics</b> to view Metrics.</li>
-                  <li>Enter the host name of your production system and the port on which StrongLoop PM is running (8701 by default).</li>
-                </ol>
+
+                  <p>Click <b>Metrics</b> to view Metrics.</p>
+                  <p>Enter the host name of your production system and the port on which StrongLoop PM is running
+                  (8701 by default).</p>
+
               </div>
               <div class="_col -col-1-3">
                 <img src="/images/arc-remote-metrics.png" class="c-fleximg" />
@@ -501,19 +508,19 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h3"> Set up the event loop watchdog  </h2>
+            <h2 class="c-heading -h3"> Set up event loop triggered profiling  </h2>
             <div class="_col -col-1-2">
-              <p>Use the event loop watchdog to start CPU profiling when the Node event loop stalls.
+              <p>Use the event loop triggered profiling  to start CPU profiling when the Node event loop stalls.
               Simply add a timeout argument to specify the threshold: if the
               event loop stalls for longer than that time, then CPU profiling starts.
               It stops when the event loop resumes execution.</p>
             </div>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>For example, to start CPU profiling for process ID 22670 when event loop stalls for more than 500ms:</p>
+                <p>For example, to start CPU profiling for process ID 22670 when event loop stalls for more than 12ms:</p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl cpu-start 22670 500 </code></pre>
+                <pre><code class="language-bash">$ slc ctl cpu-start 22670 12 </code></pre>
               </div>
             </div>
           </div>

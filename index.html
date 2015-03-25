@@ -35,6 +35,7 @@
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item -active"><a href="/">About</a></li>
+              <li class="_nav-item "><a href="/examples">Compare</a></li>
               <li class="_nav-item"><a href="/getting-started">Local Use</a></li>
               <li class="_nav-item"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
@@ -48,7 +49,7 @@
         </div>
         <div class="c-section -intro">
           <div class="c-container">
-            <h2 class="c-heading -h1">The best deployment and process management for Node (<i>tagline</i>)</h2>
+            <h2 class="c-heading -h1">The best deployment and process management for Node </h2>
             <div class="c-grid">
               <div class="_col -col-1-2 -offset-1-4">
                 <div class="c-terminal">
@@ -111,204 +112,6 @@
           </div>
         </section>
 
-        <section class="c-section x-greylight">
-          <a name="build-deploy"></a>
-          <div class="c-container -padded">
-            <h2 class="c-heading -h3">Compare with pm2 and Forever</h2>
-            <div class="c-grid">
-              <div class="_col -col-1-1">
-
-<table border="1" class="comp">
-<tr>
-  <th id="feature">Feature</th>
-  <th>Forever</th>
-  <th>pm2</th>
-  <th>StrongLoop Process Manager and Arc</th>
-</tr>
-
-<tr>
-  <td class="col1">Run app locally</td>
-  <td>forever start app.js</td>
-  <td>pm2 start app.js -name foo</td>
-  <td>Use Arc to run the app OR slc start app.js</td>
-</tr>
-
-<tr>
-  <td class="col1">Build and package repositories</td>
-  <td></td>
-  <td></td>
-  <td>Supports Git and npm-pack based</td>
-</tr>
-
-<tr>
-  <td class="col1">Manage remotely</td>
-  <td></td>
-  <td>Deployment over SSH</td>
-  <td>Deploy over SSH, HTTP. Manage over REST (+SSH)</td>
-</tr>
-
-<tr>
-  <td class="col1">Set environment variables</td>
-  <td></td>
-  <td>Available as part of ecosystem config</td>
-  <td>Available on install and part of API</td>
-</tr>
-
-<tr>
-  <td class="col1">Clustering</td>
-  <td></td>
-  <td>Available but not recommended for production</td>
-  <td>Available</td>
-</tr>
-
-<tr>
-<td class="col1">Resize cluster</td>
-<td></td>
-<td>Deploy/start time only</td>
-<td>Deploy-time and runtime</td>
-</tr>
-
-<tr>
-<td class="col1">Metrics</td>
-<td></td>
-<td>CPU, Memory, stack traces reported on error output</td>
-<td>CPU, memory, database, NoSQL connectors, many others.</td>
-</tr>
-
-<tr>
-<td class="col1">Integrate with external metrics</td>
-<td>No</td>
-<td>keymetrics.io only</td>
-<td>Yes, via statsD, graphite, etc</td>
-</tr>
-
-<tr>
-<td class="col1">Multiple deploys/revert</td>
-<td></td>
-<td>Deploys over SSH, revert to previous deployment</td>
-<td>Deploys over SSH, HTTP. No revert <i>What about Git-based deploys</i></td>
-</tr>
-
-<tr>
-<td class="col1">How to deploy to remote</td>
-<td>manual ssh + deploy etc</td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td class="col1">Profiling</td>
-<td></td>
-<td></td>
-<td>Heap, CPU</td>
-</tr>
-
-<tr>
-<td class="col1">Watch dog</td>
-<td>No</td>
-<td>No</td>
-<td>Available</td>
-</tr>
-
-<tr>
-<td class="col1">OS startup script support</td>
-<td></td>
-<td>Fedora, Debian, Gentoo</td>
-<td>Fedora, Debian</td>
-</tr>
-
-<tr>
-<td class="col1">Log aggregation/rotation</td>
-<td></td>
-<td>Yes, multihost, with roation. Log file only. No syslog</td>
-<td>Yes, per PM only. Log file and syslog.</td>
-</tr>
-
-<tr>
-<td class="col1">Graceful/rolling restart support</td>
-<td></td>
-<td>Available</td>
-<td>Available</td>
-</tr>
-
-<tr>
-<td class="col1">Remote API</td>
-<td>No</td>
-<td>No</td>
-<td>Available</td>
-</tr>
-
-<tr>
-<td class="col1">Auth for Deploy and API</td>
-<td></td>
-<td>Deploy auth is SSH-key based</td>
-<td>HTTP auth</td>
-</tr>
-
-<tr>
-<td class="col1">Multi app support</td>
-<td>Can manage multiple local apps</td>
-<td>Can manage multiple local/remote apps</td>
-<td>PM supports only single app</td>
-</tr>
-
-<tr>
-<td class="col1">Dev/prov env support</td>
-<td></td>
-<td>Separate server list, env for dev deployment vs prod deployment</td>
-<td>Arc maintains only single list of PMs to deploy to</td>
-</tr>
-
-<tr>
-<td class="col1">Language Support</td>
-<td>Can run any script file</td>
-<td>Can run any script file</td>
-<td>Node only
-</td>
-</tr>
-
-<tr>
-<td class="col1">Cron-based restart</td>
-<td>No</td>
-<td>Can restart script based on Cron</td>
-<td>No</td>
-</tr>
-
-<tr>
-<td class="col1">Memory usage based restart</td>
-<td></td>
-<td>Can restart script if memory usage is over certain limit</td>
-<td></td>
-</tr>
-
-<tr>
-  <td class="col1">Spin detection</td>
-  <td>Can set min uptime and limit restarts if spin is detected</td>
-  <td>Can set min uptime and limit restarts if spin is detected</td>
-  <td>PM will always restart</td>
-</tr>
-
-<tr>
-<td class="col1">Graphical management console</td>
-<td>No</td>
-<td>No</td>
-<td>StrongLoop Arc</td>
-</tr>
-
-<tr>
-<td class="col1">Profiling/heapdump</td>
-<td>No</td>
-<td>Can set debug port per process</td>
-<td>Arc, slc ctl</td>
-</tr>
-
-</table>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section class="c-section ">
           <a name="build-deploy"></a>
           <div class="c-container -padded">
@@ -334,8 +137,7 @@
               <div class="_col -col-1-2">
                 <ul class="fa-ul">
                   <li><i class="fa-li fa fa-check"></i>Heap snapshots and CPU profiles.</li>
-                  <li><i class="fa-li fa fa-check"></i>Profile local or remote applications with Arc.</li>
-                  <li><i class="fa-li fa fa-check"></i>Profile local applications with slc.</li>
+                  <li><i class="fa-li fa fa-check"></i>Profile applications to find performance bottlenecks.</li>
                   <li><i class="fa-li fa fa-check"></i>Use the  <i>watchdog</i> to start CPU profiling when the Node event loop stalls. </li>
                 </ul>
               </div>
@@ -370,13 +172,15 @@
             <div class="c-grid">
               <div class="_col -col-2-3">
                 <ul class="fa-ul">
-                  <li><i class="fa-li fa fa-check"></i>View performance metrics in Arc.</li>
+                  <li><i class="fa-li fa fa-check"></i>View performance metrics such as event loop times, CPU and memory consumption.</li>
                   <li><i class="fa-li fa fa-check"></i> Publish metrics to <a href="https://github.com/etsy/statsd">etsy/statsd</a>
-                  compatible servers, and view in 3rd-party console such as:
+                  compatible servers, and view in 3rd-party consoles such as:
                     <ul style="margin-top: 0;">
-                      <li><a href="https://www.datadoghq.com/">DataDog</a>, as well as natively to</li>
-                      <li>Natively to <a href="http://graphite.readthedocs.org/en/latest">Graphite</a> or <a href="http://www.splunk.com">Splunk</a>.</li>
+                      <li><a href="https://www.datadoghq.com/">DataDog</a></li>
+                      <li><a href="http://graphite.readthedocs.org/en/latest">Graphite</a> </li>
+                      <li><a href="http://www.splunk.com">Splunk</a></li>
                       <li>Even syslog and raw log files.</li>
+                      <li>See <a href="http://docs.strongloop.com/display/SLC/Integrating+with+third-party+consoles">Integrating with third-party consoles</a> for details.</li>
                     </ul>
                   </li>
                   <li><i class="fa-li fa fa-check"></i>Third-party probe metrics, for example for Memcached, backends such as MongoDB, Redis, MySQL, and so on. </li>
