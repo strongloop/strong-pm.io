@@ -35,7 +35,7 @@
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
-              <li class="_nav-item "><a href="/examples">Compare</a></li>
+              <li class="_nav-item "><a href="/compare">Compare</a></li>
               <li class="_nav-item -active"><a href="/getting-started">Local Use</a></li>
               <li class="_nav-item"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
@@ -188,42 +188,33 @@ $ slc ctl
               </div>
 
               <div class="_col -col-1-1">
-                <pre><code class="language-markup" style="font-size: 85%">2015-03-13T23:37:19.265Z pid:36620 worker:0 INFO supervisor starting (pid 36620)
-2015-03-13T23:37:19.265Z pid:36620 worker:0 INFO supervisor reporting metrics to `internal:`
-2015-03-13T23:37:19.267Z pid:36620 worker:0 INFO supervisor size set to 4
-2015-03-13T23:37:19.271Z pid:36620 worker:0 INFO supervisor listening on 'runctl'
-2015-03-13T23:37:19.344Z pid:36620 worker:0 INFO supervisor started worker 1 (pid 36621)
-2015-03-13T23:37:19.476Z pid:36620 worker:0 INFO supervisor started worker 2 (pid 36622)
-2015-03-13T23:37:19.610Z pid:36620 worker:0 INFO supervisor started worker 3 (pid 36623)
-2015-03-13T23:37:19.869Z pid:36620 worker:0 INFO supervisor started worker 4 (pid 36624)
-2015-03-13T23:37:19.869Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:29.459Z pid:36621 worker:1 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.459Z pid:36621 worker:1 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:29.460Z pid:36622 worker:2 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.460Z pid:36622 worker:2 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:29.460Z pid:36624 worker:4 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.460Z pid:36624 worker:4 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:29.460Z pid:36623 worker:3 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.460Z pid:36623 worker:3 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:49.302Z pid:36620 worker:0 WARN received SIGHUP, restarting workers
-2015-03-13T23:37:49.316Z pid:36620 worker:0 ERROR supervisor worker id 1 (pid 36621) expected exit with 2
-2015-03-13T23:37:49.372Z pid:36620 worker:0 INFO supervisor started worker 5 (pid 36628)
-2015-03-13T23:37:49.372Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:50.573Z pid:36628 worker:5 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:50.573Z pid:36628 worker:5 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:51.389Z pid:36620 worker:0 ERROR supervisor worker id 2 (pid 36622) expected exit with 2
-2015-03-13T23:37:51.442Z pid:36620 worker:0 INFO supervisor started worker 6 (pid 36629)
-2015-03-13T23:37:51.442Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:52.611Z pid:36629 worker:6 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:52.611Z pid:36629 worker:6 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:53.458Z pid:36620 worker:0 ERROR supervisor worker id 3 (pid 36623) expected exit with 2
-2015-03-13T23:37:53.511Z pid:36620 worker:0 INFO supervisor started worker 7 (pid 36630)
-2015-03-13T23:37:53.511Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:54.658Z pid:36630 worker:7 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:54.659Z pid:36630 worker:7 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:55.525Z pid:36620 worker:0 ERROR supervisor worker id 4 (pid 36624) expected exit with 2
-2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor started worker 8 (pid 36632)
-2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor resized to 4</code></pre>
+                <pre><code class="language-markup" style="font-size: 85%">2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent using collector https://collector.strongloop.com:443
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent v1.3.2 profiling app 'express-example-app' pid '70339'
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent[70339] started profiling agent
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO supervisor starting (pid 70339)
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent strong-agent using strong-cluster-control v2.0.0
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO supervisor reporting metrics to `internal:`
+2015-03-25T04:21:08.451Z pid:70339 worker:0 INFO supervisor size set to 4
+2015-03-25T04:21:08.455Z pid:70339 worker:0 INFO supervisor listening on 'runctl'
+2015-03-25T04:21:08.521Z pid:70339 worker:0 INFO supervisor started worker 1 (pid 70340)
+2015-03-25T04:21:08.656Z pid:70339 worker:0 INFO supervisor started worker 2 (pid 70341)
+2015-03-25T04:21:08.775Z pid:70339 worker:0 INFO supervisor started worker 3 (pid 70342)
+2015-03-25T04:21:08.948Z pid:70340 worker:1 INFO strong-agent[70340] started profiling agent
+2015-03-25T04:21:08.949Z pid:70339 worker:0 INFO supervisor started worker 4 (pid 70343)
+2015-03-25T04:21:08.950Z pid:70339 worker:0 INFO supervisor resized to 4
+2015-03-25T04:21:08.970Z pid:70339 worker:0 INFO strong-agent[70339] connected to collector
+2015-03-25T04:21:09.030Z pid:70341 worker:2 INFO strong-agent[70341] started profiling agent
+2015-03-25T04:21:09.082Z pid:70340 worker:1 Listening on port: 3000
+2015-03-25T04:21:09.159Z pid:70342 worker:3 INFO strong-agent[70342] started profiling agent
+2015-03-25T04:21:09.229Z pid:70343 worker:4 INFO strong-agent[70343] started profiling agent
+2015-03-25T04:21:09.231Z pid:70341 worker:2 Listening on port: 3000
+2015-03-25T04:21:09.758Z pid:70342 worker:3 Listening on port: 3000
+2015-03-25T04:21:09.759Z pid:70343 worker:4 Listening on port: 3000
+2015-03-25T04:21:09.760Z pid:70340 worker:1 INFO strong-agent[70340] connected to collector
+2015-03-25T04:21:09.840Z pid:70341 worker:2 INFO strong-agent[70341] connected to collector
+2015-03-25T04:21:09.873Z pid:70342 worker:3 INFO strong-agent[70342] connected to collector
+2015-03-25T04:21:09.955Z pid:70343 worker:4 INFO strong-agent[70343] connected to collector
+</code></pre>
               </div>
             </div>
           </div>
@@ -293,13 +284,11 @@ load into Chrome Dev Tools
             </div>
 
             <div class="c-grid top-pad" >
-              <div class="_col -col-2-3" >
+              <div class="_col -col-1-2" >
                 <img src="http://docs.strongloop.com/download/attachments/5308533/arc%20splash.png?version=1&api=v2" class="c-fleximg" />
               </div>
-            </div>
-
-            <div class="c-grid top-pad" >
-              <div class="_col -col-2-3" >
+              <div class="_col -col-1-2" >
+                <br/>
                   <p>In Arc, click <b>Profiler</b>.</p>
               </div>
             </div>
@@ -350,7 +339,7 @@ load into Chrome Dev Tools
 
         <section class="c-section "><a name="license"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3"> Monitor performance metrics with Arc </h2>
+            <h2 class="c-heading -h3"> Monitor performance metrics </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1" style="margin-bottom: 10px;">
@@ -394,12 +383,11 @@ $ slc arc</code></pre>
           <nav class="_nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
+              <li class="_nav-item"><a href="/compare">Compare</a></li>
               <li class="_nav-item -active"><a href="/getting-started">Local Use</a></li>
               <li class="_nav-item"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
               <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
-
-              <li class="_nav-item"><a href="https://github.com/strongloop/loopback">GitHub</a></li>
             </ul>
           </nav>
           <p class="_copyright">© Copyright 2015 StrongLoop, Inc.</p>

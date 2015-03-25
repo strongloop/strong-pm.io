@@ -1325,6 +1325,14 @@ table.comp tr td {
 td.col1 {
     background-color: #193819;
 }
+
+.comp-category {
+    text-align: center;
+    font-weight: bold;
+    font-size: 110%;
+    background-color: #4F4F4F;
+}
+
 #feature {
     background-color: #002200;
 }
