@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>StrongLoop Process Manager</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,300italic,400italic,500italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu+Mono">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-placeholder/2.0.7/jquery.placeholder.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+    <script src="/js/prism.js"></script><script>$('input, textarea').placeholder();</script>
+    <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script><![endif]-->
+    <script src="/js/main.js"></script>
+  </head>
+  <body class="l-page-examples -examples-index js-body">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5XL76H');</script>
+  <!-- End Google Tag Manager -->
+    <div class="c-wrapper js-wrapper">
+      <header class="c-masthead">
+        <div class="c-container x-flex-v js-masthead-container">
+          <a href="/" class="_logo x-flex-v">
+            <h1 class="c-heading -h3">StrongLoop<br/> Process Manager</h1>
+          </a>
+          <nav class="_nav js-masthead-nav">
+            <ul class="_nav-list js-nav-list">
+              <li class="_nav-item "><a href="/">About</a></li>
+              <li class="_nav-item -active"><a href="/examples">Compare</a></li>
+              <li class="_nav-item"><a href="/getting-started">Local Use</a></li>
+              <li class="_nav-item"><a href="/prod">Remote Use</a></li>
+              <li class="_nav-item"><a href="/resources">Resources</a></li>
+            </ul>
+          </nav>
+          <button class="_menu js-menu">
+            <i class="fa fa-bars"></i>
+            <span class="x-hide">Menu</span>
+          </button>
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=strong-pm&amp;type=watch&amp;count=true" class="c-github-star js-github-star"></iframe>
+        </div>
+      </header>
+      <main class="c-content">
+
+        <section class="c-section x-greylight">
+          <a name="build-deploy"></a>
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3">Compare with pm2 and Forever</h2>
+            <div class="c-grid">
+              <div class="_col -col-1-1">
+
+<table border="1" class="comp">
+<tr>
+  <th id="feature">Feature</th>
+  <th>StrongLoop Process Manager</th>
+  <th>pm2</th>
+  <th>Forever</th>
+</tr>
+
+<tr>
+  <td class="col1">Run app locally</td>
+  <td><span class="cmd">slc start</span> </td>
+  <td><span class="cmd">pm2 start app.js -name foo</span></td>
+  <td><span class="cmd">forever&nbsp;start&nbsp;app.js</span></td>
+</tr>
+
+<tr>
+  <td class="col1">Restart on failure</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>Yes</td>
+</tr>
+
+<tr>
+  <td class="col1">Graceful/rolling restarts</td>
+  <td>Available</td>
+  <td>Available</td>
+  <td>No</td>
+</tr>
+
+<tr>
+  <td class="col1">OS startup script support</td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Security</td>
+<td>HTTP auth and HTTP+SSH</td>
+<td>SSH only for deploy</td>
+<td>No</td>
+</tr>
+
+<tr>
+  <td class="col1">Set environment variables</td>
+  <td>Available on install and with <span class="cmd">slc ctl env-set</span> command</td>
+  <td>Available as part of ecosystem configuration</td>
+  <td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Log aggregation/rotation</td>
+<td>Yes; log file and syslog</td>
+<td>Yes; multihost, with rotation. Log file only; no syslog</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Multiple app support</td>
+<td>Coming soon!</td>
+<td>Can manage multiple local/remote apps</td>
+<td>Can manage multiple local apps</td>
+</tr>
+
+<tr>
+<td class="col1">Language Support</td>
+<td>Node only
+<td>Can run any script file</td>
+<td>Can run any script file</td>
+</td>
+</tr>
+
+
+<tr><td colspan="4" class="comp-category"> Build & Deploy </td></tr>
+
+<tr>
+  <td class="col1">Build and package repositories</td>
+  <td>Supports Git and npm-pack based builds</td>
+  <td>No</td>
+  <td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Remote deploy</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Multiple deploys/revert</td>
+<td>Deploys over SSH, HTTP. <br/>Revert any previous deployment.</td>
+<td>Deploys over SSH, revert to previous deployment</td>
+<td>No</td>
+</tr>
+
+<tr><td colspan="4" class="comp-category"> Clustering & Management </td></tr>
+
+<tr>
+  <td class="col1">Clustering</td>
+  <td>Available</td>
+  <td>Available but not recommended for production</td>
+  <td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Resize clusters</td>
+<td>At deploy-time, start-time, and runtime</td>
+<td>At deploy-time and start-time only</td>
+<td>No</td>
+</tr>
+
+<tr>
+  <td class="col1">Manage remotely</td>
+  <td>Deploy over SSH+HTTP<br/>Manage over REST (+SSH)</td>
+  <td>Deploy over SSH</td>
+  <td>No</td>
+</tr>
+
+<tr>
+  <td class="col1">Load balancer auto-configuration</td>
+  <td>Yes </td>
+  <td>No</td>
+  <td>No</td>
+</tr>
+
+<tr><td colspan="4" class="comp-category"> Profiling </td></tr>
+
+<tr>
+<td class="col1">Profiling</td>
+<td>Heap and CPU profiles</td>
+<td>No</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Profile triggering</td>
+<td>Trigger profiling based on slow event loop</td>
+<td>No</td>
+<td>No</td>
+</tr>
+
+<tr><td colspan="4" class="comp-category"> Metrics</td></tr>
+
+<tr>
+<td class="col1">Metrics</td>
+<td>CPU, memory, database, NoSQL connectors, many others</td>
+<td>CPU, memory, stack traces reported on error output</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td class="col1">Integrate with external metrics</td>
+<td>Yes: StatsD, graphite, Splunk, etc.</td>
+<td>keymetrics.io only</td>
+<td>No</td>
+</tr>
+
+</table>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <footer class="c-footer x-green">
+        <div class="c-container -padded">
+          <nav class="_nav">
+            <ul class="_nav-list js-nav-list">
+              <li class="_nav-item"><a href="/">About</a></li>
+              <li class="_nav-item -active"><a href="/compare">Compare</a></li>
+              <li class="_nav-item"><a href="/getting-started">Getting started</a></li>
+              <li class="_nav-item -active"><a href="/examples">Examples</a></li>
+              <li class="_nav-item"><a href="/resources">Resources</a></li>
+            </ul>
+          </nav>
+          <p class="_copyright">© Copyright 2015 StrongLoop, Inc.</p>
+          <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=loopback&amp;type=follow" class="c-github-follow"></iframe>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

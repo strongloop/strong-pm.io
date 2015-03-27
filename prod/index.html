@@ -35,6 +35,7 @@
           <nav class="_nav js-masthead-nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
+              <li class="_nav-item "><a href="/compare">Compare</a></li>
               <li class="_nav-item "><a href="/getting-started">Local Use</a></li>
               <li class="_nav-item -active"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
@@ -51,23 +52,29 @@
       <main class="c-content">
         <section class="c-section">
           <div class="c-container -padded">
-            <h1 class="c-heading -h2">Using remotely in production</h1>
-            <p></p>
+            <h1 class="c-heading -h2">Use remotely in production</h1>
+
+            <div class="c-grid">
+              <div class="_col -col-3-4">
+                <img src="/images/PM Local and Remote.svg" />
+              </div>
+            </div>
+
           </div>
         </section>
 
         <section class="c-section x-greylight"><a name="prod"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h3">Install on production host</h2>
+            <h2 class="c-heading -h3">Install on remote host</h2>
             <div class="c-grid">
               <div class="_col -col-1-1">
-                <p>Install StrongLoop Process Manager on a remote host using either npm or Docker.
+                <p>Install StrongLoop Process Manager on a remote host from either npm or Docker.
                 Then you can remotely deploy and control your app from your workstation using the StrongLoop tools.
                 </p>
                 <p>Either:</p>
                 <ul>
                   <li><a href="#npm-install">Install with npm</a></li>
-                  <li><a href="#docker">Install with Docker Hub</a></li>
+                  <li><a href="#docker">Install from Docker Hub</a></li>
                 </ul>
               </div>
             </div>
@@ -127,11 +134,11 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
 
         <section class="c-section x-greylight"><a name="docker"></a>
           <div class="c-container -padded">
-            <h2 class="c-heading -h4">OR Install with Docker Hub </h2>
+            <h2 class="c-heading -h4">Or: Install and run from Docker Hub</h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1">
-                Run StrongLoop PM as a service without installing anything. All you need is Docker!
+                Run StrongLoop PM as a service without installing anything.  You must have Docker installed on the system.
                 </p><p>
                 Run the script below to download the image, start a StrongLoop PM container, and create an Upstart
                 or systemd config file.  The app will use port 3000; StrongLoop PM will use port 8701 and will
@@ -142,20 +149,22 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
               </div>
             </div>
             <div class="_col -col-1-1">
-              <p>For more information on Docker and Docker Hub, see <a href="https://www.docker.com/">https://www.docker.com</a>.</p>
+              <!-- Link to our docs instead -->
+              <p>For more information on installing from Docker Hub, see
+              <a href="http://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-InstallandrunwithDocker">Setting up a production host (StrongLoop documentation)</a>.</p>
             </div>
           </div>
         </section>
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Build your application </h2>
+            <h2 class="c-heading -h3"> Build your application </h2>
 
             <p class="note">NOTE: This assumes you followed <a href="http://localhost:3000/getting-started/">Getting Started</a>
             to install StrongLoop on your workstation and have a Node app to deploy.</p>
 
             <p>Back on your workstation, you're going to build your app for deployment.
-            You can either build a .tgz (tar file) or build to a Git branch.
+            You can either build an npm package (a .tgz file) or build to a Git branch.
             </p>
 
             <div class="c-grid">
@@ -180,7 +189,7 @@ Committed build products onto `deploy`
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>If your project code is not in a Git repository, then by default <span style="font-family: monospace;">slc build</span>
-                will build a .tgz archive.<br/>
+                will build an npm package (a .tgz file).<br/>
                 See <a href="http://docs.strongloop.com/display/SLC/Creating+a+build+archive">Creating a build archive</a> for details.
                 </p>
               </div>
@@ -188,8 +197,13 @@ Committed build products onto `deploy`
 <pre><code class="language-bash">$ slc build
 Running `npm install --ignore-scripts`
 Running `npm prune --production`
+Running `touch .npmignore`
+Check the auto-generated .npmignore is correct!
+Setting package.json "bundleDependencies" to: [
+  express
+]
 Running `npm --quiet pack`
-Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
+Running `mv -f express-example-app-1.0.0.tgz ../express-example-app-1.0.0.tgz`
 </code></pre>
               </div>
             </div>
@@ -198,25 +212,27 @@ Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Deploy to remote host </h2>
+            <h2 class="c-heading -h3"> Deploy to remote host </h2>
+
             <div class="c-grid">
               <div class="_col -col-1-3">
-            <p>Deploy the app package .tgz to the remote StrongLoop PM.</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
-              </div>
-            </div>
-<br/>
-            <div class="c-grid">
-              <div class="_col -col-1-3">
-            <p>Alternatively, deploy the Git 'deploy' branch....</p>
+            <p>Deploy your app from the Git 'deploy' branch....</p>
               </div>
               <div class="_col -col-2-3">
                 <pre><code class="language-bash">$ slc deploy http://your.remote.host</code></pre>
               </div>
             </div>
 
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+            <p>Alternatively, deploy the npm package to the remote StrongLoop PM.</p>
+              </div>
+              <br/>
+              <div class="_col -col-2-3 top-pad">
+                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
+              </div>
+            </div>
+<br/>
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>Your app is now deployed!</p>
@@ -228,23 +244,20 @@ Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
 
         <section class="c-section ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Display app status </h2>
+            <h2 class="c-heading -h3"> Display app status </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-1">
                 <p>Get a quick status overview with all worker PIDs, cluster IDs, other key information.</p>
-
-               <!-- <p>NOTE: By default, StrongLoop PM control endpoint uses port 8701.</p>  -->
-
               </div>
-            </div><div class="c-grid">
+            </div>
+            <div class="c-grid top-pad">
               <div class="_col -col-1-1">
                 <pre><code class="language-bash">$ slc ctl --control http://your.remote.host
 manager:
   pid:                22642
   port:               8701
   base:               /Users/rand/.strong-pm
-  config:             undefined
 current:
   status:             started
   pid:                22669
@@ -256,7 +269,6 @@ current:
     [2]:              cluster id 2, pid 22671
     [3]:              cluster id 3, pid 22672
     [4]:              cluster id 4, pid 22673
-  config:             default
     start command:    sl-run --cluster=CPU
     stop signal:      SIGTERM
     replace signal:   SIGHUP
@@ -266,29 +278,41 @@ current:
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section x-greylight ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Change cluster size  </h2>
+            <h2 class="c-heading -h3"> Change cluster size on remote host </h2>
+
             <div class="c-grid">
-              <div class="_col -col-1-3">
+              <div class="_col -col-1-1">
             <p>By default the Process Manager runs one process per CPU.  So, on a four-core system
-            it will run the app in a four-process cluster.
-            </p>
-            <p>You can easily change the cluster size.  For example, set the cluster to two worker processes.</p>
-              </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host set-size 2</code></pre>
+            it will run the app in a four-process cluster.  </p>
               </div>
             </div>
+
+            <div class="c-grid">
+              <div class="_col -col-1-3">
+            <p>  You can easily change the cluster size.</p>
+            <p>Now if you display status again, you'll see only two worker processes running:</p>
+              </div>
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host set-size 2
+$ slc ctl --control http://your.remote.host
+...
+  worker count:       2
+    [1]:              cluster id 1, pid 14984
+    [2]:              cluster id 2, pid 14985</code></pre>
+              </div>
+            </div>
+
           </div>
         </section>
 
-        <section class="c-section ">
+        <section class="c-section">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4">Re-deploy app with zero downtime  </h2>
+            <h2 class="c-heading -h3">Re-deploy app with zero downtime  </h2>
             <div class="c-grid" >
               <div class="_col -col-1-2">
-                <p>When your code changes, simply rebuild and re-deploy it to the production host.
+                <p>When your code changes, simply rebuild and re-deploy it to the production host (for example, using Git deploy).
                   StrongLoop Process Manager automatically performs a rolling restart of all processes, so you get zero downtime.
                 </p>
               </div>
@@ -299,13 +323,13 @@ current:
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section x-greylight ">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Generate logs </h2>
+            <h2 class="c-heading -h3"> Generate logs </h2>
 
             <div class="c-grid">
               <div class="_col -col-1-3">
-                Dump the log buffer to stdout.
+                Follow your logs live in the console.
                 <!-- Show a different log example here? -->
               </div>
               <div class="_col -col-2-3" style="margin-bottom: 10px;">
@@ -313,65 +337,74 @@ current:
               </div>
 
               <div class="_col -col-1-1">
-                <pre><code class="language-markup" style="font-size: 85%">2015-03-13T23:37:19.265Z pid:36620 worker:0 INFO supervisor starting (pid 36620)
-2015-03-13T23:37:19.265Z pid:36620 worker:0 INFO supervisor reporting metrics to `internal:`
-2015-03-13T23:37:19.267Z pid:36620 worker:0 INFO supervisor size set to 4
-2015-03-13T23:37:19.271Z pid:36620 worker:0 INFO supervisor listening on 'runctl'
-2015-03-13T23:37:19.344Z pid:36620 worker:0 INFO supervisor started worker 1 (pid 36621)
-2015-03-13T23:37:19.476Z pid:36620 worker:0 INFO supervisor started worker 2 (pid 36622)
-2015-03-13T23:37:19.610Z pid:36620 worker:0 INFO supervisor started worker 3 (pid 36623)
-2015-03-13T23:37:19.869Z pid:36620 worker:0 INFO supervisor started worker 4 (pid 36624)
-2015-03-13T23:37:19.869Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:29.459Z pid:36621 worker:1 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.459Z pid:36621 worker:1 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:29.460Z pid:36622 worker:2 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.460Z pid:36622 worker:2 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:29.460Z pid:36624 worker:4 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.460Z pid:36624 worker:4 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:29.460Z pid:36623 worker:3 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:29.460Z pid:36623 worker:3 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:49.302Z pid:36620 worker:0 WARN received SIGHUP, restarting workers
-2015-03-13T23:37:49.316Z pid:36620 worker:0 ERROR supervisor worker id 1 (pid 36621) expected exit with 2
-2015-03-13T23:37:49.372Z pid:36620 worker:0 INFO supervisor started worker 5 (pid 36628)
-2015-03-13T23:37:49.372Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:50.573Z pid:36628 worker:5 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:50.573Z pid:36628 worker:5 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:51.389Z pid:36620 worker:0 ERROR supervisor worker id 2 (pid 36622) expected exit with 2
-2015-03-13T23:37:51.442Z pid:36620 worker:0 INFO supervisor started worker 6 (pid 36629)
-2015-03-13T23:37:51.442Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:52.611Z pid:36629 worker:6 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:52.611Z pid:36629 worker:6 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:53.458Z pid:36620 worker:0 ERROR supervisor worker id 3 (pid 36623) expected exit with 2
-2015-03-13T23:37:53.511Z pid:36620 worker:0 INFO supervisor started worker 7 (pid 36630)
-2015-03-13T23:37:53.511Z pid:36620 worker:0 INFO supervisor resized to 4
-2015-03-13T23:37:54.658Z pid:36630 worker:7 Browse your REST API at http://localhost:3000/explorer
-2015-03-13T23:37:54.659Z pid:36630 worker:7 Web server listening at: http://localhost:3000/
-2015-03-13T23:37:55.525Z pid:36620 worker:0 ERROR supervisor worker id 4 (pid 36624) expected exit with 2
-2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor started worker 8 (pid 36632)
-2015-03-13T23:37:55.600Z pid:36620 worker:0 INFO supervisor resized to 4</code></pre>
+                <pre><code class="language-markup" style="font-size: 85%">2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent using collector https://collector.strongloop.com:443
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent v1.3.2 profiling app 'express-example-app' pid '70339'
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent[70339] started profiling agent
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO supervisor starting (pid 70339)
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO strong-agent strong-agent using strong-cluster-control v2.0.0
+2015-03-25T04:21:08.447Z pid:70339 worker:0 INFO supervisor reporting metrics to `internal:`
+2015-03-25T04:21:08.451Z pid:70339 worker:0 INFO supervisor size set to 4
+2015-03-25T04:21:08.455Z pid:70339 worker:0 INFO supervisor listening on 'runctl'
+2015-03-25T04:21:08.521Z pid:70339 worker:0 INFO supervisor started worker 1 (pid 70340)
+2015-03-25T04:21:08.656Z pid:70339 worker:0 INFO supervisor started worker 2 (pid 70341)
+2015-03-25T04:21:08.775Z pid:70339 worker:0 INFO supervisor started worker 3 (pid 70342)
+2015-03-25T04:21:08.948Z pid:70340 worker:1 INFO strong-agent[70340] started profiling agent
+2015-03-25T04:21:08.949Z pid:70339 worker:0 INFO supervisor started worker 4 (pid 70343)
+2015-03-25T04:21:08.950Z pid:70339 worker:0 INFO supervisor resized to 4
+2015-03-25T04:21:08.970Z pid:70339 worker:0 INFO strong-agent[70339] connected to collector
+2015-03-25T04:21:09.030Z pid:70341 worker:2 INFO strong-agent[70341] started profiling agent
+2015-03-25T04:21:09.082Z pid:70340 worker:1 Listening on port: 3000
+2015-03-25T04:21:09.159Z pid:70342 worker:3 INFO strong-agent[70342] started profiling agent
+2015-03-25T04:21:09.229Z pid:70343 worker:4 INFO strong-agent[70343] started profiling agent
+2015-03-25T04:21:09.231Z pid:70341 worker:2 Listening on port: 3000
+2015-03-25T04:21:09.758Z pid:70342 worker:3 Listening on port: 3000
+2015-03-25T04:21:09.759Z pid:70343 worker:4 Listening on port: 3000
+2015-03-25T04:21:09.760Z pid:70340 worker:1 INFO strong-agent[70340] connected to collector
+2015-03-25T04:21:09.840Z pid:70341 worker:2 INFO strong-agent[70341] connected to collector
+2015-03-25T04:21:09.873Z pid:70342 worker:3 INFO strong-agent[70342] connected to collector
+2015-03-25T04:21:09.955Z pid:70343 worker:4 INFO strong-agent[70343] connected to collector
+</code></pre>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Set up secure access  </h2>
+            <h2 class="c-heading -h3"> Set up secure access  </h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-2">
+              <div class="_col -col-1-1">
                 <p>You may have noticed that slc has been connecting to your production server over HTTP.
-                Of course, you don't want to allow just anyone to deploy to and control your server, so you need to set up secure access.
+                Of course you need to set up secure access to your servers.
                 Fortunately, StrongLoop PM supports secure connections using SSH.</p>
-
-                <p>First, you have to set up SSH key-based authentication.
-                Many developers will already have this configured for secure access to GitHub and remote servers.
-                See <a href="https://help.github.com/articles/generating-ssh-keys/">Generating SSH keys</a> if you need some guidance. </p>
-                <p>Then you just need to set some environment variables, and from then on you can use <span class="cmd">http+ssh</span>
-                instead of plain old HTTP to control and deploy securely to your server.  </p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ export SSH_USER=ubuntu
+                <p>First, verify that you have SSH remote access as follows:</p>
+                <p>Note: Your remote user name may be something other than "root".</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ ssh root@the.remote.host
+$ SSH_USER=root slc ctl status</code></pre>
+              </div>
+            </div>
+<br/>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <p>Then set up SSH key-based authentication, if you haven't done so already.
+
+                </p>
+                <p>
+                You just need to set some environment variables, then enter these commands:
+                From then on you can use <span class="cmd">http+ssh</span>
+                instead of plain old <span class="cmd">http</span> to control and deploy securely to your server.
+                </p>
+                <p>
+                See <a href="https://help.github.com/articles/generating-ssh-keys/">Generating SSH keys</a> if you need some guidance. </p>
+                </p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ export SSH_USER=root
 $ export SSH_KEY=~/.ssh/ec2.rsa
 $ slc deploy http+ssh://the.remote.host
 $ slc ctl -C http+ssh://the.remote.host status</code></pre>
@@ -380,44 +413,39 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           </div>
         </section>
 
-        <section class="c-section ">
+        <section class="c-section  x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> View CPU and memory profiles </h2>
+            <h2 class="c-heading -h3"> View CPU and memory profiles </h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-1" >
-                <p>If you haven't already done so, set up your StrongLoop license properly for profiling and viewing metrics.
-                See <a href="/getting-started#license">Getting Started </a> for instructions.</p>
-              </div>
-              <div class="_col -col-1-1" >
-                <p class="note">NOTE: For profiling and metrics, you must have C compiler tools on the system running the app.
-                These come standard on most Linux systems.  See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
+              <div class="_col -col-1-1">
+                <p>To get meaningful data, run the profiler while your application is under typical or high load.</p>
               </div>
             </div>
-<br/>
-            <div class="c-grid">
+            <div class="c-grid top-pad">
               <div class="_col -col-1-2">
-                <ol>
-                  <li>On your local (development) system, start StrongLoop Arc.</li>
-                  <li>Log in, if you're not already logged in.</li>
-                </ol>
+                <p>On your local (development) system, start StrongLoop Arc.</p>
+                <p>Log in, if you're not already logged in.</p>
                 <p>You'll see the StrongLoop Arc splash screen:</p>
               </div>
-              <div class="_col -col-1-2">
+              <div class="_col -col-1-2 top-pad">
                 <pre><code class="language-bash">$ slc arc</code></pre>
               </div>
             </div>
 
-            <div class="c-grid" style="margin-top: 10px;">
-              <div class="_col -col-2-3" >
-                <img src="http://docs.strongloop.com/download/attachments/5308533/arc%20splash.png?version=1&modificationDate=1424798146000&api=v2" class="c-fleximg" />
+            <div class="c-grid top-pad" >
+              <div class="_col -col-1-2" >
+                <img src="/images/arc splash.png" class="c-fleximg" />
+              </div>
+              <div class="_col -col-1-2">
+                  <p style="margin-top: 30px;">In Arc, click <b>Profiler</b>.</p>
               </div>
             </div>
 <br/>
             <div class="c-grid">
-              <div class="_col -col-1-2">
-               <ol>
-                  <li>Click <b>Profiler</b>.</li>
+              <div class="_col -col-2-3">
+                <p>In Arc Profiler:</p>
+                <ol>
                   <li>Enter the host name of your production system and the port on which StrongLoop PM is running (8701 by default).</li>
                   <li>Click <b>Load</b> to load.  You'll see the PIDs of the app processes; the first one is selected by default.</li>
                   <li>"JavaScript/Node.js CPU Profile" is selected by default. Click <b>Start</b> to start CPU profiling the
@@ -427,7 +455,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
                   list to view it; for example as shown below.</li>
                 </ol>
               </div>
-              <div class="_col -col-1-2">
+              <div class="_col -col-1-3">
                 <img src="/images/arc-profile-target.png" class="c-fleximg" />
               </div>
             </div>
@@ -440,63 +468,91 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Monitor app performance metrics with Arc </h2>
+            <h2 class="c-heading -h3"> Monitor performance metrics </h2>
 
             <div class="c-grid ">
-              <div class="_col -col-1-2">
-                <ol>
-                  <li>Click <b>Metrics</b> to view Metrics.</li>
-                  <li>Enter the host name of your production system and the port on which StrongLoop PM is running (8701 by default).</li>
-                </ol>
+              <div class="_col -col-3-4" style="margin-bottom: 10px;">
+                <p>If you haven't already done so, set up your StrongLoop license key for monitoring performance metrics.
+                See <a href="/getting-started#license">Local Use</a> for instructions.</p>
               </div>
-              <div class="_col -col-1-2">
+              <div class="_col -col-2-3">
+
+                  <p>Click <b>Metrics</b>.</p>
+                  <p>Enter the host name of your production system and the port on which StrongLoop PM is running
+                  (8701 by default).</p>
+
+              </div>
+              <div class="_col -col-1-3">
                 <img src="/images/arc-remote-metrics.png" class="c-fleximg" />
               </div>
             </div>
-<br/>
+
             <div class="c-grid">
               <div class="_col -col-3-4">
-                 <p>Arc will display the process IDs (PIDs) for the app running on the remote host and select the first PID,
-                   then display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption.</p>
+                 <p>Arc will show the process IDs (PIDs) for the app running on the remote host and
+                   display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption for the first process shown.</p>
                   <p>For details on the available metrics,
                   see <a href="http://docs.strongloop.com/display/SLC/Viewing+metrics+with+Arc#ViewingmetricswithArc-Availablemetrics">Available metrics</a>.</p>
-                <img src="http://docs.strongloop.com/download/attachments/4557583/remote%20metrics.png?version=1&api=v2" class="c-fleximg"/>
+                <img src="/images/arc-metrics.png" class="c-fleximg"/>
               </div>
             </div>
           </div>
         </section>
 
-
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h4"> Set up load balancer </h2>
+            <h2 class="c-heading -h3"> Trigger CPU profiling when the Node event loop stalls </h2>
+            <div class="_col -col-1-2">
+              <p>To trigger CPU profiling when the Node event loop stalls,
+              simply add a timeout argument to specify the threshold: if the
+              event loop stalls for longer than that time, then CPU profiling starts.
+              It stops when the event loop resumes execution.</p>
+            </div>
+            <div class="c-grid">
+              <div class="_col -col-1-2">
+                <p>For example, to start CPU profiling for process ID 22670 when event loop stalls for more than 12ms:</p>
+              </div>
+              <div class="_col -col-1-2">
+                <pre><code class="language-bash">$ slc ctl cpu-start 22670 12 </code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="c-section ">
+          <div class="c-container -padded">
+            <h2 class="c-heading -h3"> Set up load balancer </h2>
             <div class="c-grid">
               <div class="_col -col-1-2"><p>Assuming you have already <a href="http://nginx.org/en/download.html">installed Nginx</a>....</p></div>
             </div>
 
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>Run the StrongLoop Nginx Controller service.</p>
-                <p>Add the load balancer in Arc:</p>
-                <ul>
+                <p>First, install and run the StrongLoop Nginx Controller service on your load balancer host.</p>
+                <br/>
+                <p>Then add the load balancer in Arc:</p>
+                <ol>
                   <li>Click <b>Process Manager</b>.</li>
                   <li>Add all your Process Manager hosts.</li>
                   <li>Click <b>Load Balancer</b>.  Enter the Nginx load balancer host and port.</li>
-                </ul>
+                </ol>
               </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ npm install -g strong-nginx-controller</code></pre>
-                <pre><code class="language-bash">$ sl-nginx-ctl-install</code></pre>
+              <div class="_col -col-1-2 push-up">
+                <pre><code class="language-bash">$ npm install -g strong-nginx-controller
+$ sl-nginx-ctl-install</code></pre>
+                <img src="/images/arc-lb-setup.png" class="c-fleximg"/>
               </div>
             </div>
-<br/>
+            <!--
+
             <div class="c-grid">
               <div class="_col -col-1-2">
                 <img src="http://docs.strongloop.com/download/attachments/5310901/arc-lb-setup.png?version=1&api=v2" class="c-fleximg"/>
               </div>
             </div>
+            -->
           </div>
         </section>
 
@@ -506,12 +562,10 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           <nav class="_nav">
             <ul class="_nav-list js-nav-list">
               <li class="_nav-item"><a href="/">About</a></li>
+              <li class="_nav-item"><a href="/compare">Compare</a></li>
               <li class="_nav-item -active"><a href="/getting-started">Local Use</a></li>
-              <li class="_nav-item"><a href="/prod">Remote Use</a></li>
+              <li class="_nav-item -active"><a href="/prod">Remote Use</a></li>
               <li class="_nav-item"><a href="/resources">Resources</a></li>
-              <!-- <li class="_nav-item"><a href="/users">Who's using?</a></li> -->
-
-              <li class="_nav-item"><a href="https://github.com/strongloop/loopback">GitHub</a></li>
             </ul>
           </nav>
           <p class="_copyright">© Copyright 2015 StrongLoop, Inc.</p>
