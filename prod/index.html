@@ -55,7 +55,7 @@
             <h1 class="c-heading -h2">Use remotely in production</h1>
 
             <div class="c-grid">
-              <div class="_col -col-2-3">
+              <div class="_col -col-3-4">
                 <img src="/images/PM Local and Remote.svg" />
               </div>
             </div>
@@ -197,8 +197,13 @@ Committed build products onto `deploy`
 <pre><code class="language-bash">$ slc build
 Running `npm install --ignore-scripts`
 Running `npm prune --production`
+Running `touch .npmignore`
+Check the auto-generated .npmignore is correct!
+Setting package.json "bundleDependencies" to: [
+  express
+]
 Running `npm --quiet pack`
-Running `mv -f profiling-app-0.0.1.tgz ../profiling-app-0.0.1.tgz`
+Running `mv -f express-example-app-1.0.0.tgz ../express-example-app-1.0.0.tgz`
 </code></pre>
               </div>
             </div>
@@ -413,19 +418,17 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
             <h2 class="c-heading -h3"> View CPU and memory profiles </h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-1" >
-                <p class="note">NOTE: For profiling and metrics, you must have compiler tools on the system running the app.
-                These come standard on most Linux systems.  See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
+              <div class="_col -col-1-1">
+                <p>To get meaningful data, run the profiler while your application is under typical or high load.</p>
               </div>
             </div>
-<br/>
-            <div class="c-grid">
+            <div class="c-grid top-pad">
               <div class="_col -col-1-2">
                 <p>On your local (development) system, start StrongLoop Arc.</p>
                 <p>Log in, if you're not already logged in.</p>
                 <p>You'll see the StrongLoop Arc splash screen:</p>
               </div>
-              <div class="_col -col-1-2">
+              <div class="_col -col-1-2 top-pad">
                 <pre><code class="language-bash">$ slc arc</code></pre>
               </div>
             </div>
@@ -476,7 +479,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
               </div>
               <div class="_col -col-2-3">
 
-                  <p>Click <b>Metrics</b> to view Metrics.</p>
+                  <p>Click <b>Metrics</b>.</p>
                   <p>Enter the host name of your production system and the port on which StrongLoop PM is running
                   (8701 by default).</p>
 
@@ -488,8 +491,8 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 
             <div class="c-grid">
               <div class="_col -col-3-4">
-                 <p>Arc will display the process IDs (PIDs) for the app running on the remote host and select the first PID,
-                   then display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption.</p>
+                 <p>Arc will show the process IDs (PIDs) for the app running on the remote host and
+                   display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption for the first process shown.</p>
                   <p>For details on the available metrics,
                   see <a href="http://docs.strongloop.com/display/SLC/Viewing+metrics+with+Arc#ViewingmetricswithArc-Availablemetrics">Available metrics</a>.</p>
                 <img src="/images/arc-metrics.png" class="c-fleximg"/>
@@ -500,10 +503,10 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
 
         <section class="c-section x-greylight">
           <div class="c-container -padded">
-            <h2 class="c-heading -h3"> Set up event loop triggered profiling  </h2>
+            <h2 class="c-heading -h3"> Trigger CPU profiling when the Node event loop stalls </h2>
             <div class="_col -col-1-2">
-              <p>Use <i>event loop triggered profiling</i> to start CPU profiling when the Node event loop stalls.
-              Simply add a timeout argument to specify the threshold: if the
+              <p>To trigger CPU profiling when the Node event loop stalls,
+              simply add a timeout argument to specify the threshold: if the
               event loop stalls for longer than that time, then CPU profiling starts.
               It stops when the event loop resumes execution.</p>
             </div>

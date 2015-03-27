@@ -240,14 +240,9 @@ Environment updated: Updated environment, restarting app </code></pre>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> View CPU and memory profiles </h2>
             <div class="c-grid">
-              <div class="_col -col-1-1" >
-                <p class="note">NOTE: For profiling and metrics, you must have compiler tools on the system running the app.
-                These come standard on most Linux systems.  See <a href="http://docs.strongloop.com/display/SL/Installing+compiler+tools">Installing compiler tools</a>.</p>
-                <p>To get meaningful data, run the profiler while you application is under typical or high load.</p>
+              <div class="_col -col-1-1">
+                <p>To get meaningful data, run the profiler while your application is under typical or high load.</p>
               </div>
-            </div>
-
-            <div class="c-grid">
               <div class="_col -col-1-2">
 <br/>
                 <ol>
@@ -271,9 +266,7 @@ load into Chrome Dev Tools
 
             <div class="c-grid">
               <div class="_col -col-1-2" >
-                  <p>Start StrongLoop Arc to view the profile data.</p>
-                  <p>Arc is free to use, but you must first <a href="https://strongloop.com/register/">register with StrongLoop</a> and login.
-                  After you log in, you'll see the Arc splash screen:</p>
+                  <p>Start StrongLoop Arc and log in to view the profile data.</p>
               </div>
               <div class="_col -col-1-2" >
                 <pre><code class="language-bash">$ slc arc</code></pre>
@@ -294,7 +287,7 @@ load into Chrome Dev Tools
                 <p>In Arc Profiler:</p>
                 <ol>
                   <li>Click <b>File</b> to load the profile you just generated.</li>
-                  <li>Make sure "JavScript/Node.js CPU Profile" is selected</li>
+                  <li>Make sure "JavScript/Node.js CPU Profile" is selected.</li>
                   <li>Click <b>Load</b>.</li>
                   <li>Choose the .cpuprofile file you generated.  The file will then be listed in in the <b>Profiles</b> list.</li>
                   <li>Click on the file name in the Profiles list.  You'll see the CPU profile data, as illustrated below. </li>
@@ -359,9 +352,9 @@ $ slc arc</code></pre>
 
             <div class="c-grid ">
               <div class="_col -col-3-4">
-                  <p>Click <b>Metrics</b> to view Metrics.</p>
-                  <p>Arc will display the process IDs (PIDs) for the local app and select the first PID.
-                  It will then display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption.</p>
+                  <p>Click <b>Metrics</b>.</p>
+                  <p>Arc will show the process IDs (PIDs) for the local app and
+                   display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption for the first process shown.</p>
               </div>
             </div>
 
