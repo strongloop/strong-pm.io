@@ -3,6 +3,8 @@ loopback.io
 
 StrongLoop Process Manager mini-site, http://strong-pm.io.
 
+NOTE: The website is served from the `gh-pages` branch.
+
 ##How to run the site locally
 
 ###Get `serve` module if you don't already have it:
@@ -12,7 +14,7 @@ StrongLoop Process Manager mini-site, http://strong-pm.io.
 ###Clone the repo:
 
 ```
-$ git clone https://github.com/strongloop/strong-pm.io.git 
+$ git clone -b gh-pages https://github.com/strongloop/strong-pm.io.git 
 $ cd strong-pm.io
 ```
 
@@ -23,7 +25,7 @@ $ serve .
 serving /<path>/strong-pm.io on port 3000
 ```
 
-To run on a differen port:
+To run on a different port:
 
 ```
 $ serve -p 3001 .
