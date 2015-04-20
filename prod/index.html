@@ -158,7 +158,7 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
           </div>
         </section>
 
-        <section class="c-section ">
+        <section class="c-section "><a name="build"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Build your application </h2>
 
@@ -212,40 +212,40 @@ Running `mv -f express-example-app-1.0.0.tgz ../express-example-app-1.0.0.tgz`
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section x-greylight"><a name="deploy"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Deploy to remote host </h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
-            <p>Deploy your app from the Git 'deploy' branch....</p>
+              <div class="_col -col-3-5">
+                <p>Deploy the npm package (.tgz file) file to the remote StrongLoop PM.
+                By default, <span class="cmd">slc deploy</span> looks in the parent directory for a .tgz file with the name and version specified in your app's
+                <span class="cmd">package.json</span>.
+                </p>
+                <p>In this case, it finds <span class="cmd">express-example-app-1.0.0.tgz</span>, so it deploys it to the specified host.</p>
+                <p>Your app is now deployed!</p>
+
               </div>
-              <div class="_col -col-2-3">
+              <br/>
+              <div class="_col -col-2-5 top-pad">
                 <pre><code class="language-bash">$ slc deploy http://your.remote.host</code></pre>
               </div>
             </div>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
-            <p>Alternatively, deploy the npm package to the remote StrongLoop PM.</p>
-              </div>
-              <br/>
-              <div class="_col -col-2-3 top-pad">
-                <pre><code class="language-bash">$ slc deploy http://your.remote.host ../express-example-app-1.0.0.tgz</code></pre>
-              </div>
-            </div>
-<br/>
-            <div class="c-grid">
               <div class="_col -col-1-1">
-                <p>Your app is now deployed!</p>
+                <p>If the tool doesn't find a .tgz file, then by default it deploys the app from the Git 'deploy' branch.
+                You can also specify a .tgz file or Git branch as an argument.
+                If you want to try this out, just delete the .tgz file and re-enter the above command.</p>
                 <p>Open <a href="http://your.remote.host:3000">http://your.remote.host:3000</a> to see the app in your browser.</p>
-                <p>For more information, see <a href="http://docs.strongloop.com/display/SLC/Deploying+applications+with+slc">Deploying applications with slc</a> in the documentation.</p>
+                <p>For more information, see <a href="http://docs.strongloop.com/display/SLC/Deploying+applications+with+slc">Deploying applications with slc</a>
+                in the documentation.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="c-section ">
+        <section class="c-section "><a name="status"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Display app status </h2>
 
@@ -281,7 +281,7 @@ current:
           </div>
         </section>
 
-        <section class="c-section x-greylight ">
+        <section class="c-section x-greylight "><a name="cluster"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Change cluster size on remote host </h2>
 
@@ -316,7 +316,7 @@ $ slc ctl --control http://your.remote.host
         </div>
         </section>
 
-        <section class="c-section">
+        <section class="c-section"><a name="redeploy"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3">Re-deploy app with zero downtime  </h2>
             <div class="c-grid" >
@@ -332,7 +332,7 @@ $ slc ctl --control http://your.remote.host
           </div>
         </section>
 
-        <section class="c-section x-greylight ">
+        <section class="c-section x-greylight "><a name="logs"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Generate logs </h2>
 
@@ -378,7 +378,7 @@ $ slc ctl --control http://your.remote.host
           </div>
         </section>
 
-        <section class="c-section">
+        <section class="c-section"><a name="secure"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Set up secure access  </h2>
 
@@ -422,7 +422,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           </div>
         </section>
 
-        <section class="c-section  x-greylight">
+        <section class="c-section  x-greylight"><a name="profile"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> View CPU and memory profiles </h2>
 
@@ -482,14 +482,14 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           </div>
         </section>
 
-        <section class="c-section">
+        <section class="c-section"><a name="metrics"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Monitor performance metrics </h2>
 
             <div class="c-grid ">
               <div class="_col -col-3-4" style="margin-bottom: 10px;">
                 <p>If you haven't already done so, set up your StrongLoop license key for monitoring performance metrics.
-                See <a href="/getting-started#license">Local Use</a> for instructions.</p>
+                See <a href="/getting-started#metrics">Local Use</a> for instructions.</p>
               </div>
               <div class="_col -col-2-3">
 
@@ -515,7 +515,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           </div>
         </section>
 
-        <section class="c-section x-greylight">
+        <section class="c-section x-greylight"><a name="trigger"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Trigger CPU profiling when the Node event loop stalls </h2>
             <div class="_col -col-1-2">
@@ -535,7 +535,7 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
           </div>
         </section>
 
-        <section class="c-section ">
+        <section class="c-section "><a name="lb"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h3"> Set up load balancer </h2>
             <div class="c-grid">
