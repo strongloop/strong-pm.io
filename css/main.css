@@ -312,6 +312,11 @@ body {
     font-size: 1rem;
 }
 
+.c-heading a {
+  color: inherit;
+  font-weight: inherit;
+}
+
 p {
     margin: 1rem 0;
 }
