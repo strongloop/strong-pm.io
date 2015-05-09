@@ -82,28 +82,30 @@
             <h2 class="c-heading -h3"><a href="#start"> Start application </a></h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
+              <div class="_col -col-1-4">
                 <p>Get an app if you don't have one handy. </p>
               </div>
-              <div class="_col -col-2-3">
+              <div class="_col -col-3-4">
 <pre><code class="language-bash">$ git clone https://github.com/strongloop/express-example-app.git
 </code></pre>
               </div>
             </div>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
+              <div class="_col -col-1-4">
                 <p>After installing dependencies, start Process Manager locally and deploy the app to it. </p>
-                <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to see the app home page.</p>
+                <p>Open <a href="http://localhost:3001">http://localhost:3001</a> to see the app home page.</p>
               </div>
-              <div class="_col -col-2-3">
+              <div class="_col -col-3-4" >
 <pre><code class="language-bash">$ cd express-example-app
 $ npm install
 $ slc start
-App `.` started under local process manager.
-  View the status:  slc ctl status
-  View the logs:    slc ctl log-dump
-  More options:     slc ctl -h
+Process Manager is attempting to run app `.`.
+
+  To confirm it is started: slc ctl status express-example-app
+  To view the last logs: slc ctl log-dump express-example-app
+  To see more options: slc ctl -h
+  To see metrics, the profilers and other diagnostic features run: slc arc
 </code></pre>
               </div>
             </div>
@@ -125,23 +127,28 @@ App `.` started under local process manager.
             </div><div class="c-grid">
               <div class="_col -col-1-1">
                 <pre><code class="language-bash">$ slc ctl
-manager:
-  pid:                14860
-  port:               8701
-  base:               /Users/rand/.strong-pm
-current:
-  status:             started
-  pid:                14861
-  link:               /Users/rand/StrongLoop/express-example-app
-  current:            express-example-app
-  branch:             local-directory
-  worker count:       4
-    [1]:              cluster id 1, pid 14862
-    [2]:              cluster id 2, pid 14863
-    [3]:              cluster id 3, pid 14864
-    [4]:              cluster id 4, pid 14865
+Service ID: 1
+Service Name: express-example-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.0       1.5.1            4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.58223  58223   0
+    1.1.58224  58224   1     0.0.0.0:3001
+    1.1.58225  58225   2     0.0.0.0:3001
+    1.1.58226  58226   3     0.0.0.0:3001
+    1.1.58227  58227   4     0.0.0.0:3001
 </code></pre>
               </div>
+              <p>This tells you the app is running as a service called "express-example-app" with service ID 1.</p>
+              <p>
+              By default, Process Manager uses a service name from the <span style="font-family: monospace;">name property</span>
+              of the application's <span style="font-family: monospace;">package.json</span>.
+              So, if you're not using express-example-app, then your service name will be different.
+              </p>
             </div>
           </div>
         </section>
@@ -158,21 +165,23 @@ current:
             </div>
 <br/>
             <div class="c-grid">
-              <div class="_col -col-1-2">
-            <p>  You can easily change the cluster size.</p>
+              <div class="_col -col-1-3">
+            <p>You can easily change the cluster size.  If you're not using express-example-app, be sure to substitute your service name in the command.</p>
             <p>Now if you display status again, you'll see only two worker processes running:</p>
               </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl set-size 2
+              <div class="_col -col-2-3">
+                <pre><code class="language-bash">$ slc ctl set-size express-example-app 2
 $ slc ctl
 ...
-  worker count:       2
-    [1]:              cluster id 1, pid 14984
-    [2]:              cluster id 2, pid 14985</code></pre>
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.58223  58223   0
+    1.1.58224  58224   1     0.0.0.0:3001
+    1.1.58225  58225   2     0.0.0.0:3001</code></pre>
               </div>
           </div>
           <div class="c-grid">
-            <div class="_col -col-1-1">
+            <div class="_col -col-1-1"><br/>
               <p>For more information see
               <a href="http://docs.strongloop.com/display/SLC/Scaling+to+multiple+processes">Scaling to multiple processes</a> in the documentation.</p>
             </div>
@@ -188,7 +197,7 @@ $ slc ctl
                 Follow your logs live in the console.
               </div>
               <div class="_col -col-1-2" style="margin-bottom: 10px;">
-                <pre><code class="language-bash">$ slc ctl log-dump --follow</code></pre>
+                <pre><code class="language-bash">$ slc ctl log-dump express-example-app --follow</code></pre>
               </div>
 
               <div class="_col -col-1-1">
@@ -233,7 +242,7 @@ $ slc ctl
                 <p>Use the <span class="cmd">ctl env-set</span> command to change environment variables on the fly.</p>
               </div>
               <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc ctl env-set NODE_ENV=production
+                <pre><code class="language-bash">$ slc ctl env-set express-example-app NODE_ENV=production
 Environment updated: Updated environment, restarting app </code></pre>
               </div>
             </div>
@@ -247,7 +256,7 @@ Environment updated: Updated environment, restarting app </code></pre>
               <div class="_col -col-1-1">
                 <p>To get meaningful data, run the profiler while your application is under typical or high load.</p>
               </div>
-              <div class="_col -col-1-2">
+              <div class="_col -col-2-5">
 <br/>
                 <ol>
                   <li>Determine the process ID of one of the worker processes with <span class="cmd">slc ctl</span>,
@@ -257,17 +266,17 @@ Environment updated: Updated environment, restarting app </code></pre>
                   <li>Stop the CPU profiler, as shown in the example at right.</li>
                 </ol>
               </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl cpu-start 22670
+              <div class="_col -col-3-5">
+                <pre><code class="language-bash">$ slc ctl cpu-start 1.1.58224
 Profiler started, use cpu-stop to get profile
 </code></pre>
-<pre><code class="language-bash">$ slc ctl cpu-stop 22670
-CPU profile written to `node.22670.cpuprofile`,
+<pre><code class="language-bash">$ slc ctl cpu-stop 1.1.58224
+CPU profile written to `node.1.1.58224.cpuprofile`,
 load into Chrome Dev Tools
 </code></pre>
               </div>
             </div>
-
+<br/>
             <div class="c-grid">
               <div class="_col -col-1-2" >
                   <p>Start StrongLoop Arc and log in to view the profile data.</p>
@@ -324,7 +333,7 @@ load into Chrome Dev Tools
                 Just use this command instead (for example for pid 22670):</p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl heap-snapshot 22670</code></pre>
+                <pre><code class="language-bash">$ slc ctl heap-snapshot 1.1.22670</code></pre>
               </div>
             </div>
 
@@ -341,35 +350,27 @@ load into Chrome Dev Tools
 
             <div class="c-grid">
               <div class="_col -col-1-1" style="margin-bottom: 10px;">
-                <p>To monitor performance metrics, you must set up your app with a StrongLoop product license key .
-                To get a trial license key for free:</p>
+                <p>Monitoring performance metrics requires a StrongLoop product license key.
+                You automatically get a free trial license key valid for 30 days from the first time you run Arc.
+                For more information, see <a href="http://docs.strongloop.com/display/SL/Managing+your+licenses">Managing your licenses</a>.
+                </p>
               </div>
-              <div class="_col -col-1-2">
-                <ol>
-                  <li>Get a StrongLoop license key by emailing <span class="email">sales@strongloop.com</span>.
-                  <br/>You'll get a license key that's a string several hundred characters long.
-                  </li>
-                  <li>Add your license key as shown at right.</li>
-                  <li>Start Arc and log in.</li>
-                </ol>
-              </div>
-              <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc strongops --license &lt;license-key-string&gt;
-$ slc arc</code></pre>
-              </div>
-            </div>
-
-            <div class="c-grid ">
               <div class="_col -col-3-4">
-                  <p>Click <b>Metrics</b>.</p>
-                  <p>Arc will show the process IDs (PIDs) for the local app and
-                   display peformance metrics, including statistics on CPU use, event loop execution, and heap memory consumption for the first process shown.</p>
+                <ol>
+                  <li>Start Arc and log in.</li>
+                  <li>Click <b>Metrics</b>.
+                  <br/>Arc will show the process IDs (PIDs) for the local app </li>
+                  <li>Click <b>Load</b>.</li>
+                </ol>
+                  <p>Wait a minute or two and you will see peformance metrics, including statistics on CPU use, event loop execution,
+                  and heap memory consumption for the selected process, for example, as shown below.</p>
               </div>
             </div>
 
             <div class="c-grid">
               <div class="_col -col-3-4">
                 <img src="/images/arc-metrics.png" class="c-fleximg"/>
+                <p>NOTE: Depending on the application your're using, your metrics graphs might not be as interesting as those shown here.</p>
               <p>For details on the available metrics,
                 see <a href="http://docs.strongloop.com/display/SLC/Viewing+metrics+with+Arc#ViewingmetricswithArc-Availablemetrics">Available metrics</a>.</p>
               </div>

@@ -237,7 +237,7 @@ Running `mv -f express-example-app-1.0.0.tgz ../express-example-app-1.0.0.tgz`
                 <p>If the tool doesn't find a .tgz file, then by default it deploys the app from the Git 'deploy' branch.
                 You can also specify a .tgz file or Git branch as an argument.
                 If you want to try this out, just delete the .tgz file and re-enter the above command.</p>
-                <p>Open <a href="http://your.remote.host:3000">http://your.remote.host:3000</a> to see the app in your browser.</p>
+                <p>Open <a href="http://your.remote.host:3001">http://your.remote.host:3001</a> to see the app in your browser.</p>
                 <p>For more information, see <a href="http://docs.strongloop.com/display/SLC/Deploying+applications+with+slc">Deploying applications with slc</a>
                 in the documentation.</p>
               </div>
@@ -256,25 +256,21 @@ Running `mv -f express-example-app-1.0.0.tgz ../express-example-app-1.0.0.tgz`
             </div>
             <div class="c-grid top-pad">
               <div class="_col -col-1-1">
-                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host
-manager:
-  pid:                22642
-  port:               8701
-  base:               /Users/rand/.strong-pm
-current:
-  status:             started
-  pid:                22669
-  link:               /Users/rand/StrongLoop/express-example-app
-  current:            826d11fe9a7f5b04e586.1426200263251
-  branch:             npm-pack
-  worker count:       4
-    [1]:              cluster id 1, pid 22670
-    [2]:              cluster id 2, pid 22671
-    [3]:              cluster id 3, pid 22672
-    [4]:              cluster id 4, pid 22673
-    start command:    sl-run --cluster=CPU
-    stop signal:      SIGTERM
-    replace signal:   SIGHUP
+                <pre><code class="language-bash">$ slc ctl status express-example-app --control http://your.remote.host
+Service ID: 1
+Service Name: express-example-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.0       1.5.1            4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.61192  61192   0
+    1.1.61193  61193   1     0.0.0.0:3001
+    1.1.61194  61194   2     0.0.0.0:3001
+    1.1.61195  61195   3     0.0.0.0:3001
+    1.1.61196  61196   4     0.0.0.0:3001
 </code></pre>
               </div>
             </div>
@@ -293,17 +289,19 @@ current:
             </div>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
-            <p>  You can easily change the cluster size.</p>
-            <p>Now if you display status again, you'll see only two worker processes running:</p>
+              <div class="_col -col-1-4">
+            <p>You can easily change the cluster size.</p>
+            <p>Now if you display status again, you'll see only two worker processes running.</p>
               </div>
-              <div class="_col -col-2-3">
-                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host set-size 2
-$ slc ctl --control http://your.remote.host
+              <div class="_col -col-3-4">
+                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host set-size express-example-app 2
+$ slc ctl status express-example-app --control http://your.remote.host
 ...
-  worker count:       2
-    [1]:              cluster id 1, pid 14984
-    [2]:              cluster id 2, pid 14985</code></pre>
+Processes:
+    ID         PID    WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.61192  61192   0
+    1.1.61193  61193   1     0.0.0.0:3001
+    1.1.61194  61194   2     0.0.0.0:3001</code></pre>
               </div>
             </div>
 
@@ -337,12 +335,12 @@ $ slc ctl --control http://your.remote.host
             <h2 class="c-heading -h3"><a href="#logs">Generate logs</a></h2>
 
             <div class="c-grid">
-              <div class="_col -col-1-3">
+              <div class="_col -col-1-1">
                 Follow your logs live in the console.
                 <!-- Show a different log example here? -->
               </div>
-              <div class="_col -col-2-3" style="margin-bottom: 10px;">
-                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host log-dump --follow </code></pre>
+              <div class="_col -col-1-1" style="margin-bottom: 10px;">
+                <pre><code class="language-bash">$ slc ctl --control http://your.remote.host log-dump express-example-app --follow </code></pre>
               </div>
 
               <div class="_col -col-1-1">
@@ -526,10 +524,10 @@ $ slc ctl -C http+ssh://the.remote.host status</code></pre>
             </div>
             <div class="c-grid">
               <div class="_col -col-1-2">
-                <p>For example, to start CPU profiling for process ID 22670 when event loop stalls for more than 12ms:</p>
+                <p>For example, to start CPU profiling for process ID 22670 in service ID 1, when event loop stalls for more than 12ms:</p>
               </div>
               <div class="_col -col-1-2">
-                <pre><code class="language-bash">$ slc ctl cpu-start 22670 12 </code></pre>
+                <pre><code class="language-bash">$ slc ctl cpu-start 1.1.22670 12 </code></pre>
               </div>
             </div>
           </div>
@@ -559,14 +557,6 @@ $ sl-nginx-ctl-install</code></pre>
                 <img src="/images/arc-lb-setup.png" class="c-fleximg"/>
               </div>
             </div>
-            <!--
-
-            <div class="c-grid">
-              <div class="_col -col-1-2">
-                <img src="http://docs.strongloop.com/download/attachments/5310901/arc-lb-setup.png?version=1&api=v2" class="c-fleximg"/>
-              </div>
-            </div>
-            -->
           </div>
         </section>
 
