@@ -143,7 +143,7 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
                 Run StrongLoop PM as a service without installing anything.  You must have Docker installed on the system.
                 </p><p>
                 Run the script below to download the image, start a StrongLoop PM container, and create an Upstart
-                or systemd config file.  The app will use port 3000; StrongLoop PM will use port 8701 and will
+                or systemd config file.  The app will use ports 3001-3010; StrongLoop PM will use port 8701 and will
                 automatically restart if your server reboots.
               </div>
               <div class="_col -col-1-1">
@@ -360,12 +360,12 @@ Processes:
 2015-03-25T04:21:08.950Z pid:70339 worker:0 INFO supervisor resized to 4
 2015-03-25T04:21:08.970Z pid:70339 worker:0 INFO strong-agent[70339] connected to collector
 2015-03-25T04:21:09.030Z pid:70341 worker:2 INFO strong-agent[70341] started profiling agent
-2015-03-25T04:21:09.082Z pid:70340 worker:1 Listening on port: 3000
+2015-03-25T04:21:09.082Z pid:70340 worker:1 Listening on port: 3001
 2015-03-25T04:21:09.159Z pid:70342 worker:3 INFO strong-agent[70342] started profiling agent
 2015-03-25T04:21:09.229Z pid:70343 worker:4 INFO strong-agent[70343] started profiling agent
-2015-03-25T04:21:09.231Z pid:70341 worker:2 Listening on port: 3000
-2015-03-25T04:21:09.758Z pid:70342 worker:3 Listening on port: 3000
-2015-03-25T04:21:09.759Z pid:70343 worker:4 Listening on port: 3000
+2015-03-25T04:21:09.231Z pid:70341 worker:2 Listening on port: 3001
+2015-03-25T04:21:09.758Z pid:70342 worker:3 Listening on port: 3001
+2015-03-25T04:21:09.759Z pid:70343 worker:4 Listening on port: 3001
 2015-03-25T04:21:09.760Z pid:70340 worker:1 INFO strong-agent[70340] connected to collector
 2015-03-25T04:21:09.840Z pid:70341 worker:2 INFO strong-agent[70341] connected to collector
 2015-03-25T04:21:09.873Z pid:70342 worker:3 INFO strong-agent[70342] connected to collector
