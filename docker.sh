@@ -115,7 +115,7 @@ start_container() {
   echo "Starting $IMAGE as container $CONTAINER..."
   $DOCKER run $CONTAINER_ENVS \
     --detach --restart=no \
-    --publish 8701:8701 --publish 3000:3000 \
+    --publish 8701:8701 --publish 3001-3010:3001-3010 \
     --name $CONTAINER \
     strongloop/strong-pm
 }
