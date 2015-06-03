@@ -127,9 +127,19 @@ $ sudo /usr/bin/systemctl start strong-pm </code></pre>
               <div class="_col -col-2-3">
                 <pre><code class="language-bash">$ sudo sl-pm-install --upstart=0.6
 $ sudo /sbin/initctl start strong-pm</code></pre>
-</div>
-              <p>For more information on installing from Docker Hub, see
-              <a href="http://docs.strongloop.com/display/SLC/Setting+up+a+production+host">Setting up a production host</a> in StrongLoop documentation.</p>
+              </div>
+            </div>
+
+            <div class="c-grid">
+              <div class="_col -col-1-1">
+                <p class="note">NOTE: On RHEL, by default <span style="font-family: monospace;">/usr/local/bin</span> is not on the path,
+                so if you encounter problems, use this install command:
+                <span style="font-family: monospace;">sudo env "PATH=$PATH" sl-pm-install</span>
+                </p>
+
+                <p>For more information, see
+                <a href="http://docs.strongloop.com/display/SLC/Setting+up+a+production+host">Setting up a production host</a> in StrongLoop documentation.</p>
+              </div>
             </div>
           </div>
         </section>
