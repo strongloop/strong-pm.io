@@ -144,6 +144,32 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
           </div>
         </section>
 
+        <section class="c-section"><a name="redeploy"></a>
+          <div class="c-container">
+            <h2 class="c-heading -h4"><a href="#dockerapps">Enable Dockerized apps</a></h2>
+            <div class="c-grid" >
+              <div class="_col -col-3-5">
+                <p>When you have Docker installed on your production host, you can set up StrongLoop Process Manager to "Dockerize" apps deployed to it.
+                Just use the <span style="font-family: monospace;">--driver docker</span> option when you install the StrongLoop PM service
+                so it automatically converts deployed applications into Docker images and installs them in the
+                Docker Engine running on your deployment system.
+                </p>
+              </div>
+              <div class="_col -col-2-5">
+                <pre><code class="language-bash">$ sudo sl-pm-install --driver docker</code></pre>
+              </div>
+            </div>
+            <div class="c-grid" >
+              <div class="_col -col-1-1">
+                <p>Now, whenever you deploy an app to StrongLoop PM on this server, your app will be turned into a Docker image
+                and then run in a Docker container.</p>
+                <br/>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         <section class="c-section x-greylight"><a name="docker"></a>
           <div class="c-container -padded">
             <h2 class="c-heading -h4"><a href="#docker">Or: Install and run from Docker Hub</a></h2>
@@ -163,7 +189,7 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
             <div class="_col -col-1-1">
               <!-- Link to our docs instead -->
               <p>For more information on installing from Docker Hub, see
-              <a href="http://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-InstallandrunwithDocker">Setting up a production host</a> in StrongLoop documentation.</p>
+              <a href="http://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-UsingDocker">Setting up a production host</a> in StrongLoop documentation.</p>
             </div>
           </div>
         </section>
