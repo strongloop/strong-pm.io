@@ -70,8 +70,14 @@
         <section class="c-section">
           <div class="c-container -padded">
             <div class="c-grid">
-              <div class="_col -col-3-4">
-                <h2 class="c-heading -h3">Blog posts</h2>
+              <div class="_col -col-5-6">
+                <h2 class="c-heading -h3">Latest blog posts</h2>
+
+                <ul>
+                <div id="loopback-rss" class="feedcontainer"></div>
+                </ul>
+
+                <h3 class="c-heading -h4">Older blog posts</h3>
                 <ul>
                   <li><a href="https://strongloop.com/strongblog/node-js-deploy-production-best-practice/">Best Practices for Deploying Node.js in Production</a></li>
                   <li><a href="https://strongloop.com/strongblog/node-js-process-manager-cluster-load-balancer/">Announcing the Most Complete Process Manager for Node.js Clustering</a></li>
@@ -127,5 +133,11 @@
         </div>
       </footer>
     </div>
+<script type="text/javascript">
+$(function(){
+  // running custom RSS functions
+  parseRSS('http://strongloop.com/strongblog/category/node-devops/feed/', '#loopback-rss');
+});
+</script>
   </body>
 </html>
