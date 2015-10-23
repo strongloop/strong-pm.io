@@ -1347,3 +1347,7 @@ td.col1 {
     background-color: #002200;
     width: 12rem;
 }
+
+.ni-img {
+    max-width: 200px;
+}
