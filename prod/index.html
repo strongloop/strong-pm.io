@@ -214,6 +214,8 @@ $ sudo /sbin/initctl start strong-pm</code></pre>
               </div>
               <div class="_col -col-1-1">
 <pre><code class="language-bash">$ slc build
+Running `npm install --ignore-scripts`
+Running `npm prune --production`
 Running `git add --force --all .`
 Running `git write-tree`
   => 11476565ef4903367a5b545438ecfb4d2b0a2404
@@ -235,13 +237,7 @@ Committed build products onto `deploy`
 <pre><code class="language-bash">$ slc build
 Running `npm install --ignore-scripts`
 Running `npm prune --production`
-Running `touch .npmignore`
-Check the auto-generated .npmignore is correct!
-Setting package.json "bundleDependencies" to: [
-  express
-]
-Running `npm --quiet pack`
-Running `mv -f express-example-app-1.0.0.tgz ../express-example-app-1.0.0.tgz`
+Packing application to ../express-example-app-1.0.0.tgz`
 </code></pre>
               </div>
             </div>
